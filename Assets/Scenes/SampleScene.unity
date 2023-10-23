@@ -499,6 +499,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8527632067698065286, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 2788399519872314582}
+    - target: {fileID: 8527632067698065286, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: dodgeForce
       value: 30
       objectReference: {fileID: 0}
