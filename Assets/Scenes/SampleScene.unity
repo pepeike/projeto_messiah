@@ -380,11 +380,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &835991350 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8207918074489445797, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
-  m_PrefabInstance: {fileID: 2788399519872314580}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1312476386
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +611,7 @@ PrefabInstance:
     - target: {fileID: 2418933946395912021, guid: 89ffbc753558a4747b244677cb036097, type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 835991350}
+      objectReference: {fileID: 0}
     - target: {fileID: 7024820682053897279, guid: 89ffbc753558a4747b244677cb036097, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.24
@@ -661,7 +656,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Virtual Camera
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3650718629702765758, guid: 89ffbc753558a4747b244677cb036097, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -697,6 +693,10 @@ PrefabInstance:
     - target: {fileID: 6847317681539884069, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: m_Icon
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6928860855052100905, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7384637196710437752, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: attackArea00.x
@@ -782,6 +782,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 2788399519872314582}
+    - target: {fileID: 8527632067698065286, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1312476388}
     - target: {fileID: 8527632067698065286, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: dodgeForce
       value: 30
