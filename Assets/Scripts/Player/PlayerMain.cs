@@ -47,26 +47,33 @@ public class PlayerMain : MonoBehaviour {
 
     private Rigidbody2D rb; //rigidbody do player
 
+    private Vector3 mousePos;
+    private Camera cam;
+    //public Transform target;
+    private float angle;
+
     public PlayerState playerState;
 
     private PlayerAttacks atk;
 
-    
-    
+    private CapsuleCollider2D col;
+
     void Awake() //chamado antes d void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerState = PlayerState.Normal;
+        col = GetComponent<CapsuleCollider2D>();
+        cam = GameObject.FindAnyObjectByType<Camera>();
 
-        
 
-        
 
     }
 
     private void Update() {
         switch (playerState) {
             case PlayerState.Normal:
+                RotatePlayer();
+
                 break;
             case PlayerState.Dodging:
                 Dodge();
@@ -124,8 +131,22 @@ public class PlayerMain : MonoBehaviour {
                 rb.velocity = Vector2.zero;
                 playerState = PlayerState.Normal;
             }
-
         }
+    }
+
+    void RotatePlayer() {
+        mousePos = Input.mousePosition;
+
+        float camDis = cam.transform.position.y - transform.position.y;
+
+        Vector3 mouse = cam.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+
+        float AngleRad = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x);
+
+        angle = (180 / Mathf.PI) * AngleRad;
+
+        rb.rotation = angle;
+
     }
 
     void Dodge() {
@@ -172,7 +193,6 @@ public class PlayerMain : MonoBehaviour {
                     success = TrySprint(new Vector2(0, movementInput.y)); //mesma coisa mas horizontalmente
                 }
             }
-
         }
 
         if (movementInput == Vector2.zero) {
@@ -190,7 +210,8 @@ public class PlayerMain : MonoBehaviour {
         if (count == 0) { //se o player n estiver encostado em nada ele pode se mover
             rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -205,7 +226,8 @@ public class PlayerMain : MonoBehaviour {
         if (count == 0) { //se o player n estiver encostado em nada ele pode se mover
             rb.MovePosition(rb.position + direction * speed * sprintMultiplier * Time.fixedDeltaTime);
             return true;
-        } else {
+        }
+        else {
             return false;
         }
     }
@@ -219,7 +241,8 @@ public class PlayerMain : MonoBehaviour {
 
         if (count > 0) {
             return false;
-        } else {
+        }
+        else {
             return true;
         }
 
@@ -242,20 +265,7 @@ public class PlayerMain : MonoBehaviour {
 
     }
 
-    void OnSprint(InputValue inputValue) {
-        if (!isSprinting) {
 
-            playerState = PlayerState.BouttaSprint;
-            StartCoroutine(SprintTimer());
-            isSprinting = true;
-        } else if (isSprinting) {
-            playerState = PlayerState.SprintingStop;
-            anim.SetBool("isSprinting", false);
-            StartCoroutine(WindDown());
-
-        }
-
-    }
 
 
     IEnumerator DodgeTimer() {
@@ -265,16 +275,7 @@ public class PlayerMain : MonoBehaviour {
         }
     }
 
-    IEnumerator SprintTimer() {
-        yield return new WaitForSeconds(sprintWindupTimer);
-        playerState = PlayerState.Sprinting;
-    }
 
-    IEnumerator WindDown() {
-        yield return new WaitForSeconds(sprintWinddownTimer);
-        playerState = PlayerState.Normal;
-        isSprinting = false;
-    }
 
     #endregion
 
@@ -296,7 +297,7 @@ public class PlayerMain : MonoBehaviour {
     //            break;
 
     //    }
-        
+
     //}
 
 
@@ -316,5 +317,14 @@ public class PlayerMain : MonoBehaviour {
     //}
 
     #endregion
+
+    private void EnableInvincibility() {
+        col.enabled = false;
+    }
+
+    private void DisableInvincibility() {
+        col.enabled = true;
+    }
+
 
 }
