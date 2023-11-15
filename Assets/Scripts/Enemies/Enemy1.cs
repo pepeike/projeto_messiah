@@ -8,13 +8,14 @@ public class Enemy1 : MonoBehaviour
     public int EnemyHP;
 
     private enum EnemyState {
-        Normal,
-        Wounded,
+        Idle,
+        Moving
 
     }
 
     private void Awake() {
         EnemyHP = 10;
+
     }
 
     // Update is called once per frame
@@ -22,4 +23,7 @@ public class Enemy1 : MonoBehaviour
     {
         
     }
+
+    
+
 }

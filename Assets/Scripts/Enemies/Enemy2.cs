@@ -2,11 +2,9 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Enemy2 : MonoBehaviour
-{
+public class Enemy2 : MonoBehaviour {
 
-    private enum EnemyState
-    {
+    private enum EnemyState {
         Idle,
         Moving,
         Attacking,
@@ -29,81 +27,74 @@ public class Enemy2 : MonoBehaviour
 
     private EnemyState state;
 
-    private void Awake()
-    {
+    private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         Player = GameObject.FindGameObjectWithTag("Player");
         state = EnemyState.Idle;
     }
 
-    
 
-    private void FixedUpdate()
-    {
-        
 
-        if (Player != null)
-        {
+    private void FixedUpdate() {
+
+
+        if (Player != null) {
             playerPos = Player.transform.position;
-            
+
             difX = playerPos.x - transform.position.x;
             difY = playerPos.y - transform.position.y;
 
-            if (difX > 0 && difY > 0)
-            {
+            if (difX > 0 && difY > 0) {
                 moveDir = Vector2.one;
             }
 
-            if (difX < 0 && difY < 0)
-            {
+            if (difX < 0 && difY < 0) {
                 moveDir = -Vector2.one;
             }
 
-            if (difX < 0 && difY > 0)
-            {
+            if (difX < 0 && difY > 0) {
                 moveDir = new Vector2(-1, 1);
             }
 
-            if (difX > 0 && difY < 0)
-            {
+            if (difX > 0 && difY < 0) {
                 moveDir = new Vector2(1, -1);
             }
 
-            
+
 
         }
 
-        switch (state)
-        {
+        switch (state) {
             case EnemyState.Idle:
-                StartCoroutine(Idle());
+                //StartCoroutine(Idle());
+                rb.velocity = Vector3.zero;
                 break;
             case EnemyState.Moving:
-                StartCoroutine(Move());
+                Move();
+                //StartCoroutine(Move());
                 break;
 
         }
 
     }
 
-    IEnumerator Move()
-    {
-        
-        yield return new WaitForSeconds(1);
+    void PassTick() {
+
+        if (state == EnemyState.Idle) {
+            state = EnemyState.Moving;
+            Debug.Log("Moving");
+        } else if (state == EnemyState.Moving) {
+            state = EnemyState.Idle;
+            Debug.Log("Stopping");
+        }
+
+    }
+
+    void Move() {
         rb.AddForce(moveDir * enemySpeed);
-        yield return new WaitForSeconds(1);
-        rb.velocity = Vector2.zero;
-        state = EnemyState.Idle;
-
     }
 
-    IEnumerator Idle()
-    {
-
-        yield return new WaitForSeconds(2);
-        state = EnemyState.Moving;
-
-    }
+    
 
 
 }
