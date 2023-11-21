@@ -142,7 +142,7 @@ public class PlayerMain : MonoBehaviour {
     void RotatePlayer() {
         mousePos = Input.mousePosition;
 
-        float camDis = cam.transform.position.y - transform.position.y;
+        
 
         Vector3 mouse = cam.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 

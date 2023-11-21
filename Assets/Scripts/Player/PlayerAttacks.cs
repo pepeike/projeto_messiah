@@ -97,12 +97,7 @@ public class PlayerAttacks : MonoBehaviour {
         //Debug.Log(hit);
     }
 
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawWireCube(attacks[0].transform.position, attackArea00);
-        //Gizmos.DrawLine(attacks[0].transform.position, attacks[0].transform.position + attackArea00);
-    }
+    
 
     void OnFire0() {
         //Debug.Log("Click");
