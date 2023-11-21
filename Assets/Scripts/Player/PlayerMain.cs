@@ -52,9 +52,12 @@ public class PlayerMain : MonoBehaviour {
     //public Transform target;
     private float angle;
 
+    private float mouseX;
+    private float mouseY;
+
     public PlayerState playerState;
 
-    private PlayerAttacks atk;
+    //private PlayerAttacks atk;
 
     private CapsuleCollider2D col;
 
@@ -118,6 +121,8 @@ public class PlayerMain : MonoBehaviour {
 
         //Debug.Log(playerState);
 
+
+
     }
 
     #region MOVEMENT
@@ -145,7 +150,34 @@ public class PlayerMain : MonoBehaviour {
 
         angle = (180 / Mathf.PI) * AngleRad;
 
+        mouseX = mouse.x - transform.position.x;
+        mouseY = mouse.y - transform.position.y;
+
         rb.rotation = angle;
+
+        
+        //horroroso mas funciona
+        if (Mathf.Abs(mouseY) > Mathf.Abs(mouseX) && mouseY > 0) {
+            anim.SetBool("facingUp", true);
+            anim.SetBool("facingRight", false);
+            anim.SetBool("facingLeft", false);
+            anim.SetBool("facingDown", false);
+        } else if (Mathf.Abs(mouseY) < Mathf.Abs(mouseX) && mouseX > 0) {
+            anim.SetBool("facingUp", false);
+            anim.SetBool("facingRight", true);
+            anim.SetBool("facingLeft", false);
+            anim.SetBool("facingDown", false);
+        } else if (Mathf.Abs(mouseY) > Mathf.Abs(mouseX) && mouseY < 0) {
+            anim.SetBool("facingUp", false);
+            anim.SetBool("facingRight", false);
+            anim.SetBool("facingLeft", false);
+            anim.SetBool("facingDown", true);
+        } else if (Mathf.Abs(mouseY) < Mathf.Abs(mouseX) && mouseX < 0) {
+            anim.SetBool("facingUp", false);
+            anim.SetBool("facingRight", false);
+            anim.SetBool("facingLeft", true);
+            anim.SetBool("facingDown", false);
+        }
 
     }
 
@@ -210,8 +242,7 @@ public class PlayerMain : MonoBehaviour {
         if (count == 0) { //se o player n estiver encostado em nada ele pode se mover
             rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -226,8 +257,7 @@ public class PlayerMain : MonoBehaviour {
         if (count == 0) { //se o player n estiver encostado em nada ele pode se mover
             rb.MovePosition(rb.position + direction * speed * sprintMultiplier * Time.fixedDeltaTime);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -241,8 +271,7 @@ public class PlayerMain : MonoBehaviour {
 
         if (count > 0) {
             return false;
-        }
-        else {
+        } else {
             return true;
         }
 

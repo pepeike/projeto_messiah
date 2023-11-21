@@ -11,8 +11,8 @@ public class Enemy2 : MonoBehaviour {
         Damaged,
     }
 
-    //[SerializeField]
-    //private int hitPoints = 0;
+    [SerializeField]
+    private int hitPoints = 10;
 
     public GameObject Player;
     private Vector3 playerPos;
@@ -37,6 +37,7 @@ public class Enemy2 : MonoBehaviour {
 
     private void FixedUpdate() {
 
+        if (hitPoints <= 0) { Destroy(gameObject); }
 
         if (Player != null) {
             playerPos = Player.transform.position;
@@ -94,7 +95,13 @@ public class Enemy2 : MonoBehaviour {
         rb.AddForce(moveDir * enemySpeed);
     }
 
-    
+    void Attack() {
 
+    }
 
+    public void Damage(int dmg) {
+        if (hitPoints > 0) {
+            hitPoints -= dmg;
+        }
+    }
 }

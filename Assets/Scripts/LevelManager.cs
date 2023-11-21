@@ -16,10 +16,14 @@ public class LevelManager : MonoBehaviour {
 
         if (passTick) {
             for (int i = enemies.Length - 1; i >= 0; i--) {
-                enemies[i].SendMessageUpwards("PassTick");
+                if (enemies[i] != null) {
+                    enemies[i].SendMessageUpwards("PassTick");
+                }
             }
             //Debug.Log("tick");
         }
+
+
 
     }
 

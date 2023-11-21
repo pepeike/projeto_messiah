@@ -15,8 +15,8 @@ public class PlayerAttacks : MonoBehaviour {
     private int attackPhase = 0;
 
     [SerializeField] private Vector3 attackArea00;
-    [SerializeField] private Vector3 attackArea01;
-    [SerializeField] private Vector3 attackArea02;
+    //[SerializeField] private Vector3 attackArea01;
+    //[SerializeField] private Vector3 attackArea02;
 
 
 
@@ -90,7 +90,7 @@ public class PlayerAttacks : MonoBehaviour {
 
 
     private void AttackHit(GameObject attack) {
-        RaycastHit2D hit = Physics2D.BoxCast(attack.transform.position, attackArea00, transform.rotation.z, Vector2.right, 0.2f, enemies);
+        //RaycastHit2D hit = Physics2D.BoxCast(attack.transform.position, attackArea00, transform.rotation.z, Vector2.right, 0.2f, enemies);
         
         
 
@@ -115,15 +115,15 @@ public class PlayerAttacks : MonoBehaviour {
                 
                 //AttackHit(attacks[0], hitboxes[0]);
                 //PlayerAttack(attacks[0].);
-            } else if (attackPhase == 1) {
+            } //else if (attackPhase == 1) {
                 //StopCoroutine(Attack00());
-                StopAllCoroutines();
-                StartCoroutine(Attack01());
-            } else if (attackPhase == 2) {
+                //StopAllCoroutines();
+                //StartCoroutine(Attack01());
+            //} //else if (attackPhase == 2) {
                 //StopCoroutine(Attack01());
-                StopAllCoroutines();
-                StartCoroutine(Attack02());
-            }
+                //StopAllCoroutines();
+                //StartCoroutine(Attack02());
+            //}
 
         }
 

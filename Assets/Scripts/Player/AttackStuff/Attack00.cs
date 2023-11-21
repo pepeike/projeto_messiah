@@ -16,7 +16,7 @@ public class Attack00 : MonoBehaviour
         Vector2 collisionPoint = collision.ClosestPoint(transform.position);
 
         if (collision.gameObject.CompareTag("Enemy")) {
-
+            collision.gameObject.BroadcastMessage("Damage", 3);
         }
 
         
