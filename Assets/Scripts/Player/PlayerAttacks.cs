@@ -52,7 +52,7 @@ public class PlayerAttacks : MonoBehaviour {
         attackPhase++;
         yield return new WaitForSeconds(.2f);
         attacks[0].SetActive(true);
-        AttackHit(attacks[0]);
+        
         yield return new WaitForSeconds(.4f);
         attacks[0].SetActive(false);
         yield return new WaitForSeconds(.2f);
@@ -89,13 +89,7 @@ public class PlayerAttacks : MonoBehaviour {
     #endregion
 
 
-    private void AttackHit(GameObject attack) {
-        //RaycastHit2D hit = Physics2D.BoxCast(attack.transform.position, attackArea00, transform.rotation.z, Vector2.right, 0.2f, enemies);
-        
-        
-
-        //Debug.Log(hit);
-    }
+    
 
     
 

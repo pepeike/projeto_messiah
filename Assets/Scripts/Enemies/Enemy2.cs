@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy2 : MonoBehaviour {
@@ -19,9 +20,12 @@ public class Enemy2 : MonoBehaviour {
 
     public GameObject Player;
     private Vector3 playerPos;
-    private float difX;
-    private float difY;
-    private Vector2 moveDir;
+    //private float difX;
+    //private float difY;
+    //private Vector2 moveDir;
+
+    private Vector3 directionToPlayer;
+    private Vector3 localScale;
 
     private float playerDist;
 
@@ -31,6 +35,16 @@ public class Enemy2 : MonoBehaviour {
     private float playerY;
 
     private Camera cam;
+
+    private LevelManager levelManager;
+
+    //private Transform[] LPoints;
+    private Transform target;
+
+    [SerializeField]
+    private GameObject atk;
+
+    private short atkCount = 0;
 
     [SerializeField]
     private float enemySpeed;
@@ -45,43 +59,60 @@ public class Enemy2 : MonoBehaviour {
         state = EnemyState.Idle;
         cam = GameObject.FindAnyObjectByType<Camera>();
         anim = GetComponent<Animator>();
+
+
+
+        localScale = transform.localScale;
+
+        levelManager = FindAnyObjectByType<LevelManager>();
+
     }
 
+    private void Start() {
 
+        int _randFloat = Random.Range(0, 4);
+
+        atk.SetActive(false);
+
+        target = levelManager.lPoints[_randFloat];
+
+        Debug.Log(_randFloat);
+
+    }
 
     private void FixedUpdate() {
 
         if (hitPoints <= 0) { Destroy(gameObject); }
 
-        RotateEnemy();
+        //RotateEnemy();
 
-        
+
 
         if (Player != null) {
-            playerPos = Player.transform.position;
+            //playerPos = Player.transform.position;
 
             playerDist = Vector2.Distance(transform.position, playerPos);
 
             //Debug.Log(playerDist);
 
-            difX = playerPos.x - transform.position.x;
-            difY = playerPos.y - transform.position.y;
+            //difX = playerPos.x - transform.position.x;
+            //difY = playerPos.y - transform.position.y;
 
-            if (difX > 0 && difY > 0) {
-                moveDir = Vector2.one;
-            }
+            //if (difX > 0 && difY > 0) {
+            //    moveDir = Vector2.one;
+            //}
 
-            if (difX < 0 && difY < 0) {
-                moveDir = -Vector2.one;
-            }
+            //if (difX < 0 && difY < 0) {
+            //    moveDir = -Vector2.one;
+            //}
 
-            if (difX < 0 && difY > 0) {
-                moveDir = new Vector2(-1, 1);
-            }
+            //if (difX < 0 && difY > 0) {
+            //    moveDir = new Vector2(-1, 1);
+            //}
 
-            if (difX > 0 && difY < 0) {
-                moveDir = new Vector2(1, -1);
-            }
+            //if (difX > 0 && difY < 0) {
+            //    moveDir = new Vector2(1, -1);
+            //}
 
 
 
@@ -90,11 +121,20 @@ public class Enemy2 : MonoBehaviour {
         switch (state) {
             case EnemyState.Idle:
                 //StartCoroutine(Idle());
+                RotateEnemy();
                 rb.velocity = Vector3.zero;
                 break;
             case EnemyState.Moving:
+                RotateEnemy();
                 Move();
                 //StartCoroutine(Move());
+                break;
+            case EnemyState.Attacking:
+                if (atkCount == 0) {
+                    atkCount++;
+                    StartCoroutine(EnemyAttack());
+                }
+
                 break;
 
         }
@@ -107,18 +147,15 @@ public class Enemy2 : MonoBehaviour {
             if (playerDist < minAtkDist) {
                 state = EnemyState.Attacking;
                 Debug.Log("Attacking");
-            }
-            else {
+            } else {
                 state = EnemyState.Moving;
                 Debug.Log("Moving");
             }
-        }
-        else if (state == EnemyState.Moving) {
+        } else if (state == EnemyState.Moving) {
             if (playerDist < minAtkDist) {
                 state = EnemyState.Attacking;
                 Debug.Log("Attacking");
-            }
-            else {
+            } else {
                 state = EnemyState.Idle;
                 Debug.Log("Idle");
             }
@@ -127,12 +164,14 @@ public class Enemy2 : MonoBehaviour {
     }
 
     void Move() {
-        rb.AddForce(moveDir * enemySpeed);
+        //rb.AddForce(moveDir * enemySpeed);
+        if (Player != null) {
+            directionToPlayer = (target.position - transform.position).normalized;
+            rb.velocity = new Vector2(directionToPlayer.x, directionToPlayer.y) * enemySpeed;
+        }
     }
 
-    void Attack() {
 
-    }
 
     public void Damage(int dmg) {
         if (hitPoints > 0) {
@@ -186,6 +225,25 @@ public class Enemy2 : MonoBehaviour {
         //    anim.SetBool("facingDown", false);
         //}
 
+    }
+
+    IEnumerator EnemyAttack() {
+        rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(.5f);
+        atk.SetActive(true);
+        yield return new WaitForSeconds(.2f);
+        atk.SetActive(false);
+        yield return new WaitForSeconds(.8f);
+        if (playerDist > minAtkDist + 2) {
+            atkCount = 0;
+            yield return new WaitForSeconds(.5f);
+            state = EnemyState.Moving;
+        } else {
+            rb.AddForce(new Vector2(directionToPlayer.x, directionToPlayer.y) * -enemySpeed * 50);
+            yield return new WaitForSeconds(.5f);
+            atkCount = 0;
+            state = EnemyState.Moving;
+        }
     }
 
 }

@@ -8,6 +8,16 @@ public class LevelManager : MonoBehaviour {
     private bool timerActive = false;
     public GameObject[] enemies;
 
+    public Transform[] lPoints;
+
+    private void Awake() {
+        //foreach (Transform lPoint in lPoints) {
+        //    if (lPoint != null) {
+        //        lPoint.position = Random.insideUnitCircle;
+        //    }
+        //}
+    }
+
     private void FixedUpdate() {
 
         if (!timerActive) {

@@ -5,25 +5,33 @@ using UnityEngine.UI;
 
 public class HeartSystem : MonoBehaviour
 {
+
+    [HideInInspector]
     public int vida;
-    public int vidaMaxima;
+
+    [SerializeField]
+    private int vidaMaxima;
 
     public Image[] coracao;
     public Sprite cheio;
     public Sprite vazio;
 
+    public PlayerMain player;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
+    private void Awake() {
+        vida = vidaMaxima;
+        player = gameObject.GetComponent<PlayerMain>();
     }
 
-    // Update is called once per frame
+    
+
+   
     void Update()
     {
         HealthLogic();
+
+        if (vida <= 0) { Destroy(gameObject); }
 
     }
 
@@ -54,6 +62,15 @@ public class HeartSystem : MonoBehaviour
             }
         }
     }
+
+    void PlayerTakeDamage(int dmg) {
+        if (vida > 0) {
+            vida -= dmg;
+        }
+    }
+
+
+
 }
 
 
