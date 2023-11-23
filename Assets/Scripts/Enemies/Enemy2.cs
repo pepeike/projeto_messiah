@@ -160,7 +160,7 @@ public class Enemy2 : MonoBehaviour {
     void PassTick() {
 
         if (state == EnemyState.Idle) {
-            if (playerDist < minAtkDist) {
+            if (playerDist <= minAtkDist) {
                 sprite.color = Color.red;
                 state = EnemyState.Attacking;
                 //Debug.Log("Attacking");
@@ -170,7 +170,7 @@ public class Enemy2 : MonoBehaviour {
                 //Debug.Log("Moving");
             }
         } else if (state == EnemyState.Moving) {
-            if (playerDist < minAtkDist) {
+            if (playerDist <= minAtkDist) {
                 sprite.color = Color.red;
                 state = EnemyState.Attacking;
                 // Debug.Log("Attacking");
@@ -244,31 +244,7 @@ public class Enemy2 : MonoBehaviour {
 
         //Debug.Log(playerPos);
 
-        //horroroso mas funciona
-        //if (Mathf.Abs(playerY) > Mathf.Abs(playerX) && playerY > 0) {
-        //    anim.SetBool("facingUp", true);
-        //    anim.SetBool("facingRight", false);
-        //    anim.SetBool("facingLeft", false);
-        //    anim.SetBool("facingDown", false);
-        //}
-        //else if (Mathf.Abs(playerY) < Mathf.Abs(playerX) && playerX > 0) {
-        //    anim.SetBool("facingUp", false);
-        //    anim.SetBool("facingRight", true);
-        //    anim.SetBool("facingLeft", false);
-        //    anim.SetBool("facingDown", false);
-        //}
-        //else if (Mathf.Abs(playerY) > Mathf.Abs(playerX) && playerY < 0) {
-        //    anim.SetBool("facingUp", false);
-        //    anim.SetBool("facingRight", false);
-        //    anim.SetBool("facingLeft", false);
-        //    anim.SetBool("facingDown", true);
-        //}
-        //else if (Mathf.Abs(playerY) < Mathf.Abs(playerX) && playerX < 0) {
-        //    anim.SetBool("facingUp", false);
-        //    anim.SetBool("facingRight", false);
-        //    anim.SetBool("facingLeft", true);
-        //    anim.SetBool("facingDown", false);
-        //}
+        
 
     }
 
