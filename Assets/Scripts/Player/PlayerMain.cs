@@ -33,9 +33,15 @@ public class PlayerMain : MonoBehaviour {
     private float sprintWindupTimer;
     [SerializeField]
     private float sprintWinddownTimer;
+    [SerializeField]
+    private int flickerAmnt;
+    [SerializeField]
+    private float recoverTime;
     public int attackPhase = 0;
 
     public Animator anim;
+
+    private SpriteRenderer sprite;
 
     private Vector2 movementInput; //input do jogador
 
@@ -67,7 +73,7 @@ public class PlayerMain : MonoBehaviour {
         playerState = PlayerState.Normal;
         col = GetComponent<CapsuleCollider2D>();
         cam = GameObject.FindAnyObjectByType<Camera>();
-
+        sprite = GetComponent<SpriteRenderer>();
 
 
     }
@@ -81,10 +87,10 @@ public class PlayerMain : MonoBehaviour {
             case PlayerState.Dodging:
                 Dodge();
                 break;
-            case PlayerState.BouttaSprint:
-                break;
-            case PlayerState.Sprinting:
-                break;
+            //case PlayerState.BouttaSprint:
+                //break;
+            //case PlayerState.Sprinting:
+                //break;
 
         }
     }
@@ -107,15 +113,18 @@ public class PlayerMain : MonoBehaviour {
                 FixedDodge();
 
                 break;
-            case PlayerState.BouttaSprint:
-                anim.SetBool("isSprinting", true);
-                break;
-            case PlayerState.Sprinting:
-                FixedSprint();
-                break;
-            case PlayerState.SprintingStop:
-                break;
+            //case PlayerState.BouttaSprint:
+               // anim.SetBool("isSprinting", true);
+                //break;
+            //case PlayerState.Sprinting:
+                //FixedSprint();
+                //break;
+            //case PlayerState.SprintingStop:
+                //break;
             case PlayerState.Attacking:
+                break;
+            case PlayerState.Wounded:
+                
                 break;
         }
 
@@ -355,5 +364,29 @@ public class PlayerMain : MonoBehaviour {
         col.enabled = true;
     }
 
+    IEnumerator Recover(float timer) {
+        EnableInvincibility();
+        yield return new WaitForSeconds(timer);
+        playerState = PlayerState.Normal;
+        DisableInvincibility();
+    }
+
+    IEnumerator DamageFlicker(int flickerAmnt) {
+        for (int i = flickerAmnt; i > 0; i--) {
+            yield return new WaitForSeconds(.1f);
+            sprite.color = Color.red;
+            yield return new WaitForSeconds(.1f);
+            sprite.color = Color.white;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.CompareTag("Enemy Hitbox")) {
+            Vector2 _dirAttacker = collision.transform.position - transform.position;
+            rb.AddForce(-_dirAttacker * 5, ForceMode2D.Impulse);
+            StartCoroutine(Recover(recoverTime));
+            StartCoroutine(DamageFlicker(flickerAmnt));
+        }
+    }
 
 }

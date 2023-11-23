@@ -24,6 +24,7 @@ public class Enemy2 : MonoBehaviour {
     //private float difY;
     //private Vector2 moveDir;
 
+    private Vector3 directionToTarget;
     private Vector3 directionToPlayer;
     private Vector3 localScale;
 
@@ -35,6 +36,7 @@ public class Enemy2 : MonoBehaviour {
     private float playerY;
 
     private Camera cam;
+    private SpriteRenderer sprite;
 
     private LevelManager levelManager;
 
@@ -59,7 +61,7 @@ public class Enemy2 : MonoBehaviour {
         state = EnemyState.Idle;
         cam = GameObject.FindAnyObjectByType<Camera>();
         anim = GetComponent<Animator>();
-
+        sprite = GetComponent<SpriteRenderer>();
 
 
         localScale = transform.localScale;
@@ -70,7 +72,7 @@ public class Enemy2 : MonoBehaviour {
 
     private void Start() {
 
-        int _randFloat = Random.Range(0, 4);
+        int _randFloat = Random.Range(0, 6);
 
         atk.SetActive(false);
 
@@ -86,6 +88,8 @@ public class Enemy2 : MonoBehaviour {
 
         //RotateEnemy();
 
+        directionToTarget = (target.position - transform.position).normalized;
+        directionToPlayer = (Player.transform.position - transform.position).normalized;
 
 
         if (Player != null) {
@@ -121,19 +125,31 @@ public class Enemy2 : MonoBehaviour {
         switch (state) {
             case EnemyState.Idle:
                 //StartCoroutine(Idle());
-                RotateEnemy();
-                rb.velocity = Vector3.zero;
+                if (Player != null) {
+                    RotateEnemy();
+                    rb.velocity = Vector3.zero;
+                }
+
                 break;
             case EnemyState.Moving:
-                RotateEnemy();
-                Move();
+                if (Player != null || target != null) {
+                    
+                    RotateEnemy();
+                    Move();
+                } else {
+                    rb.velocity = Vector3.zero;
+                }
+
                 //StartCoroutine(Move());
                 break;
             case EnemyState.Attacking:
                 if (atkCount == 0) {
                     atkCount++;
+                    //directionToPlayer = (target.position - transform.position).normalized;
                     StartCoroutine(EnemyAttack());
                 }
+                break;
+            case EnemyState.Damaged:
 
                 break;
 
@@ -145,19 +161,33 @@ public class Enemy2 : MonoBehaviour {
 
         if (state == EnemyState.Idle) {
             if (playerDist < minAtkDist) {
+                sprite.color = Color.red;
                 state = EnemyState.Attacking;
-                Debug.Log("Attacking");
+                //Debug.Log("Attacking");
             } else {
+                sprite.color = Color.cyan;
                 state = EnemyState.Moving;
-                Debug.Log("Moving");
+                //Debug.Log("Moving");
             }
         } else if (state == EnemyState.Moving) {
             if (playerDist < minAtkDist) {
+                sprite.color = Color.red;
                 state = EnemyState.Attacking;
-                Debug.Log("Attacking");
+                // Debug.Log("Attacking");
             } else {
+                sprite.color = Color.yellow;
                 state = EnemyState.Idle;
-                Debug.Log("Idle");
+                //Debug.Log("Idle");
+            }
+        } else if (state == EnemyState.Damaged) {
+            if (playerDist < minAtkDist) {
+                sprite.color = Color.red;
+                state = EnemyState.Attacking;
+                // Debug.Log("Attacking");
+            } else {
+                sprite.color = Color.yellow;
+                state = EnemyState.Idle;
+                //Debug.Log("Idle");
             }
         }
 
@@ -166,15 +196,30 @@ public class Enemy2 : MonoBehaviour {
     void Move() {
         //rb.AddForce(moveDir * enemySpeed);
         if (Player != null) {
-            directionToPlayer = (target.position - transform.position).normalized;
-            rb.velocity = new Vector2(directionToPlayer.x, directionToPlayer.y) * enemySpeed;
+
+            rb.velocity = new Vector2(directionToTarget.x, directionToTarget.y) * enemySpeed;
         }
+
+        for (int i = levelManager.enemies.Length - 1; i >= 0; i--) {
+            if (levelManager.enemies[i] != null) {
+                if (Vector2.Distance(transform.position, levelManager.enemies[i].transform.position) <= 3) {
+                    Vector2 dirToEnemy = (levelManager.enemies[i].transform.position - transform.position).normalized;
+                    rb.velocity += -dirToEnemy * enemySpeed;
+                }
+            }
+
+        }
+
     }
 
 
 
     public void Damage(int dmg) {
         if (hitPoints > 0) {
+            rb.velocity = Vector2.zero;
+            sprite.color = Color.magenta;
+            state = EnemyState.Damaged;
+            StartCoroutine(Knockback());
             hitPoints -= dmg;
         }
     }
@@ -233,17 +278,24 @@ public class Enemy2 : MonoBehaviour {
         atk.SetActive(true);
         yield return new WaitForSeconds(.2f);
         atk.SetActive(false);
-        yield return new WaitForSeconds(.8f);
-        if (playerDist > minAtkDist + 2) {
+        yield return new WaitForSeconds(.3f + levelManager.tickPeriod / 2);
+        if (playerDist > minAtkDist + 1) {
             atkCount = 0;
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(levelManager.tickPeriod / 2);
             state = EnemyState.Moving;
         } else {
-            rb.AddForce(new Vector2(directionToPlayer.x, directionToPlayer.y) * -enemySpeed * 50);
-            yield return new WaitForSeconds(.5f);
+            rb.AddForce(new Vector2(-directionToPlayer.x, -directionToPlayer.y) * enemySpeed * 2, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(levelManager.tickPeriod / 2);
             atkCount = 0;
             state = EnemyState.Moving;
         }
+    }
+
+    IEnumerator Knockback() {
+        //rb.velocity = Vector3.zero;
+        //rb.velocity = Vector2.zero;
+        rb.AddForce(new Vector2(-directionToPlayer.x, -directionToPlayer.y) * 2, ForceMode2D.Impulse);
+        yield return new WaitForSeconds(.2f);
     }
 
 }

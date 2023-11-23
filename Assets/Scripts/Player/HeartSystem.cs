@@ -65,6 +65,7 @@ public class HeartSystem : MonoBehaviour
 
     void PlayerTakeDamage(int dmg) {
         if (vida > 0) {
+            player.playerState = PlayerMain.PlayerState.Wounded;
             vida -= dmg;
         }
     }
