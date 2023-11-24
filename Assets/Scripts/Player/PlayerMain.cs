@@ -53,7 +53,8 @@ public class PlayerMain : MonoBehaviour {
 
     private Rigidbody2D rb; //rigidbody do player
 
-    private Vector3 mousePos;
+    [HideInInspector]
+    public Vector3 mousePos;
     private Camera cam;
     //public Transform target;
     private float angle;
@@ -87,9 +88,9 @@ public class PlayerMain : MonoBehaviour {
             case PlayerState.Dodging:
                 Dodge();
                 break;
-            //case PlayerState.BouttaSprint:
+                //case PlayerState.BouttaSprint:
                 //break;
-            //case PlayerState.Sprinting:
+                //case PlayerState.Sprinting:
                 //break;
 
         }
@@ -114,17 +115,17 @@ public class PlayerMain : MonoBehaviour {
 
                 break;
             //case PlayerState.BouttaSprint:
-               // anim.SetBool("isSprinting", true);
-                //break;
+            // anim.SetBool("isSprinting", true);
+            //break;
             //case PlayerState.Sprinting:
-                //FixedSprint();
-                //break;
+            //FixedSprint();
+            //break;
             //case PlayerState.SprintingStop:
-                //break;
+            //break;
             case PlayerState.Attacking:
                 break;
             case PlayerState.Wounded:
-                
+
                 break;
         }
 
@@ -148,12 +149,13 @@ public class PlayerMain : MonoBehaviour {
         }
     }
 
-    void RotatePlayer() {
+    public void RotatePlayer() {
         mousePos = Input.mousePosition;
 
-        
+
 
         Vector3 mouse = cam.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+        mousePos = mouse;
 
         float AngleRad = Mathf.Atan2(mouse.y - transform.position.y, mouse.x - transform.position.x);
 
@@ -164,7 +166,7 @@ public class PlayerMain : MonoBehaviour {
 
         rb.rotation = angle;
 
-        
+
         //horroroso mas funciona
         if (Mathf.Abs(mouseY) > Mathf.Abs(mouseX) && mouseY > 0) {
             anim.SetBool("facingUp", true);
