@@ -108,7 +108,7 @@ public class Enemy1 : MonoBehaviour {
 
                 break;
             case EnemyState.Damaged:
-
+                
                 break;
 
         }
@@ -135,6 +135,7 @@ public class Enemy1 : MonoBehaviour {
 
     public void Damage(int dmg) {
         if (hitPoints > 0) {
+            //StopAllCoroutines();
             rb.velocity = Vector2.zero;
             sprite.color = Color.magenta;
             state = EnemyState.Damaged;

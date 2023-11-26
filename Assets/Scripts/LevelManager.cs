@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
@@ -6,7 +7,8 @@ public class LevelManager : MonoBehaviour {
     public float tickPeriod;
     private bool passTick = false;
     private bool timerActive = false;
-    public GameObject[] enemies;
+    //lista
+    public List<GameObject> enemies;
 
     public Transform[] lPoints;
 
@@ -19,13 +21,13 @@ public class LevelManager : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-
+        
         if (!timerActive) {
             StartCoroutine(Tick());
         }
 
         if (passTick) {
-            for (int i = enemies.Length - 1; i >= 0; i--) {
+            for (int i = enemies.Count - 1; i >= 0; i--) {
                 if (enemies[i] != null) {
                     enemies[i].SendMessageUpwards("PassTick");
                 }

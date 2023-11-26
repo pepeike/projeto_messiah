@@ -55,7 +55,7 @@ public class PlayerMain : MonoBehaviour {
 
     [HideInInspector]
     public Vector3 mousePos;
-    private Camera cam;
+    public Camera cam;
     //public Transform target;
     private float angle;
 
@@ -67,13 +67,16 @@ public class PlayerMain : MonoBehaviour {
     //private PlayerAttacks atk;
 
     private CapsuleCollider2D col;
+    private BoxCollider2D hurtbox;
 
     void Awake() //chamado antes d void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         playerState = PlayerState.Normal;
         col = GetComponent<CapsuleCollider2D>();
-        cam = GameObject.FindAnyObjectByType<Camera>();
+        hurtbox = GetComponentInChildren<BoxCollider2D>(false);
+        cam = FindAnyObjectByType<Camera>(FindObjectsInactive.Exclude);
+        
         sprite = GetComponent<SpriteRenderer>();
 
 
@@ -199,6 +202,7 @@ public class PlayerMain : MonoBehaviour {
         if (dodgeSpeed < dodgeSpeedMinimum) {
             playerState = PlayerState.Normal;
             rb.velocity = Vector2.zero;
+            DisableInvincibility();
         }
     }
 
@@ -296,6 +300,7 @@ public class PlayerMain : MonoBehaviour {
 
     void OnDodge(InputValue inputValue) {
         if (dodgeCount == 0 && !isSprinting && playerState != PlayerState.Attacking) {
+            EnableInvincibility();
             dodgeCount++;
             playerState = PlayerState.Dodging;
             dodgeSpeed = dodgeForce;
@@ -359,11 +364,11 @@ public class PlayerMain : MonoBehaviour {
     #endregion
 
     private void EnableInvincibility() {
-        col.enabled = false;
+        hurtbox.enabled = false;
     }
 
     private void DisableInvincibility() {
-        col.enabled = true;
+        hurtbox.enabled = true;
     }
 
     IEnumerator Recover(float timer) {

@@ -200,7 +200,7 @@ public class Enemy2 : MonoBehaviour {
             rb.velocity = new Vector2(directionToTarget.x, directionToTarget.y) * enemySpeed;
         }
 
-        for (int i = levelManager.enemies.Length - 1; i >= 0; i--) {
+        for (int i = levelManager.enemies.Count - 1; i >= 0; i--) {
             if (levelManager.enemies[i] != null) {
                 if (Vector2.Distance(transform.position, levelManager.enemies[i].transform.position) <= 3) {
                     Vector2 dirToEnemy = (levelManager.enemies[i].transform.position - transform.position).normalized;
@@ -216,6 +216,7 @@ public class Enemy2 : MonoBehaviour {
 
     public void Damage(int dmg) {
         if (hitPoints > 0) {
+            StopCoroutine(EnemyAttack());
             rb.velocity = Vector2.zero;
             sprite.color = Color.magenta;
             state = EnemyState.Damaged;
@@ -272,6 +273,7 @@ public class Enemy2 : MonoBehaviour {
         //rb.velocity = Vector2.zero;
         rb.AddForce(new Vector2(-directionToPlayer.x, -directionToPlayer.y) * 2, ForceMode2D.Impulse);
         yield return new WaitForSeconds(.2f);
+        state = EnemyState.Attacking;
     }
 
 }
