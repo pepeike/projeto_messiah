@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy2 : MonoBehaviour {
 
-    private enum EnemyState {
+    public enum EnemyState {
         Idle,
         Moving,
         Attacking,
@@ -52,8 +52,9 @@ public class Enemy2 : MonoBehaviour {
     private float enemySpeed;
 
     private Rigidbody2D rb;
+    public Rigidbody2D turret;
 
-    private EnemyState state;
+    public EnemyState state;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -89,6 +90,7 @@ public class Enemy2 : MonoBehaviour {
         //RotateEnemy();
 
         directionToTarget = (target.position - transform.position).normalized;
+        
         directionToPlayer = (Player.transform.position - transform.position).normalized;
 
         //Debug.Log(directionToTarget);
@@ -108,6 +110,9 @@ public class Enemy2 : MonoBehaviour {
                 //StartCoroutine(Idle());
                 if (Player != null) {
                     RotateEnemy();
+                    anim.SetFloat("lookX", directionToPlayer.x);
+                    anim.SetFloat("lookY", directionToPlayer.y);
+                    anim.SetBool("isMoving", false);
                     rb.velocity = Vector3.zero;
                 }
 
@@ -117,6 +122,10 @@ public class Enemy2 : MonoBehaviour {
                     
                     RotateEnemy();
                     Move();
+                    anim.SetFloat("lookX", directionToPlayer.x);
+                    anim.SetFloat("lookY", directionToPlayer.y);
+                    anim.SetBool("isMoving", true);
+
                 } else {
                     rb.velocity = Vector3.zero;
                 }
@@ -131,6 +140,7 @@ public class Enemy2 : MonoBehaviour {
                 }
                 break;
             case EnemyState.Damaged:
+                anim.SetBool("isMoving", false);
 
                 break;
 
@@ -152,6 +162,7 @@ public class Enemy2 : MonoBehaviour {
             }
         } else if (state == EnemyState.Moving) {
             if (playerDist <= minAtkDist) {
+                
                 sprite.color = Color.red;
                 state = EnemyState.Attacking;
                 // Debug.Log("Attacking");
@@ -222,7 +233,7 @@ public class Enemy2 : MonoBehaviour {
         playerX = playerPos.x - transform.position.x;
         playerY = playerPos.y - transform.position.y;
 
-        rb.rotation = angle;
+        turret.rotation = angle;
 
         //Debug.Log(playerPos);
 
