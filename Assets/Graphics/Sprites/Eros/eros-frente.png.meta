@@ -1,0 +1,391 @@
+fileFormatVersion: 2
+guid: 1de116692f339c747a3c5693130035bf
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: eros-frente_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 10
+        width: 41
+        height: 50
+      alignment: 9
+      pivot: {x: 0.77812415, y: 0.48066184}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018ecc6f716a4414faa1f96c1da986c6
+      internalID: -447557003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_1
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 10
+        width: 42
+        height: 49
+      alignment: 9
+      pivot: {x: 0.78388757, y: 0.4709165}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b83873e148c5cfc438246abeca1cb123
+      internalID: -53080144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_2
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 10
+        width: 43
+        height: 49
+      alignment: 9
+      pivot: {x: 0.7427308, y: 0.49027368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95159fac565b70c4caec5b016924f779
+      internalID: 1091479370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_3
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 10
+        width: 45
+        height: 49
+      alignment: 9
+      pivot: {x: 0.6870938, y: 0.49196157}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a8234db586c993498134a085668106e
+      internalID: -1254597097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_4
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 10
+        width: 45
+        height: 49
+      alignment: 9
+      pivot: {x: 0.6849623, y: 0.48944947}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c900b94c2153b49b75d171942b7618
+      internalID: 1073835562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_5
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 10
+        width: 46
+        height: 48
+      alignment: 9
+      pivot: {x: 0.67337567, y: 0.5024257}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27c761156b4ce7043b0ca4b93ae36e7e
+      internalID: 1757756880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_6
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 10
+        width: 45
+        height: 48
+      alignment: 9
+      pivot: {x: 0.68935007, y: 0.47951755}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e74100197a7e2c14bb607c23a1a454f5
+      internalID: -1438765980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_7
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 10
+        width: 43
+        height: 47
+      alignment: 9
+      pivot: {x: 0.71856546, y: 0.49301448}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 459bd12cdf2de9248904b7b5ecbcebe4
+      internalID: -378253545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_8
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 10
+        width: 40
+        height: 47
+      alignment: 9
+      pivot: {x: 0.77267, y: 0.5075161}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1023631bb6c15b247abf010cbbb6dde9
+      internalID: -1877108146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_9
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 10
+        width: 38
+        height: 47
+      alignment: 9
+      pivot: {x: 0.7875639, y: 0.4878696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0145c2b094f0bdd40a1d172809098d58
+      internalID: -1414183759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_10
+      rect:
+        serializedVersion: 2
+        x: 801
+        y: 10
+        width: 39
+        height: 47
+      alignment: 9
+      pivot: {x: 0.7674936, y: 0.49089375}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10520719030b6e344a4accf7733176d6
+      internalID: 416220974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: eros-frente_11
+      rect:
+        serializedVersion: 2
+        x: 878
+        y: 10
+        width: 43
+        height: 47
+      alignment: 9
+      pivot: {x: 0.7206932, y: 0.49208215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00528cb9021c2ef40b9faf8b30762d1f
+      internalID: 1677182931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      eros-frente_0: -447557003
+      eros-frente_1: -53080144
+      eros-frente_10: 416220974
+      eros-frente_11: 1677182931
+      eros-frente_2: 1091479370
+      eros-frente_3: -1254597097
+      eros-frente_4: 1073835562
+      eros-frente_5: 1757756880
+      eros-frente_6: -1438765980
+      eros-frente_7: -378253545
+      eros-frente_8: -1877108146
+      eros-frente_9: -1414183759
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

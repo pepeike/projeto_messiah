@@ -57,12 +57,12 @@ public class Enemy2 : MonoBehaviour {
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Player = GameObject.Find("Player Renderer");
         state = EnemyState.Idle;
         cam = GameObject.FindAnyObjectByType<Camera>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
-
+        
 
         localScale = transform.localScale;
 
@@ -78,7 +78,7 @@ public class Enemy2 : MonoBehaviour {
 
         target = levelManager.lPoints[_randFloat];
 
-        Debug.Log(_randFloat);
+        //Debug.Log(_randFloat);
 
     }
 
@@ -91,33 +91,14 @@ public class Enemy2 : MonoBehaviour {
         directionToTarget = (target.position - transform.position).normalized;
         directionToPlayer = (Player.transform.position - transform.position).normalized;
 
+        //Debug.Log(directionToTarget);
+        //Debug.Log(playerDist);
+
 
         if (Player != null) {
-            //playerPos = Player.transform.position;
+            
 
             playerDist = Vector2.Distance(transform.position, playerPos);
-
-            //Debug.Log(playerDist);
-
-            //difX = playerPos.x - transform.position.x;
-            //difY = playerPos.y - transform.position.y;
-
-            //if (difX > 0 && difY > 0) {
-            //    moveDir = Vector2.one;
-            //}
-
-            //if (difX < 0 && difY < 0) {
-            //    moveDir = -Vector2.one;
-            //}
-
-            //if (difX < 0 && difY > 0) {
-            //    moveDir = new Vector2(-1, 1);
-            //}
-
-            //if (difX > 0 && difY < 0) {
-            //    moveDir = new Vector2(1, -1);
-            //}
-
 
 
         }

@@ -9,20 +9,21 @@ using static PlayerMain;
 
 public class PlayerAttacks : MonoBehaviour {
 
-    PlayerMain player;
+    public RenderFollow player;
+    public PlayerMain playerMain;
     [SerializeField]
     public GameObject[] attacks;
     private int attackPhase = 0;
 
     private Rigidbody2D rb;
 
-    private Camera cam;
+    //private Camera cam;
 
-    [SerializeField] private Vector3 attackArea00;
+    //[SerializeField] private Vector3 attackArea00;
     //[SerializeField] private Vector3 attackArea01;
     //[SerializeField] private Vector3 attackArea02;
 
-
+    
 
 
     public LayerMask enemies;
@@ -31,7 +32,7 @@ public class PlayerAttacks : MonoBehaviour {
 
     private void Awake() {
 
-        player = GetComponent<PlayerMain>();
+        
         rb = GetComponent<Rigidbody2D>();
 
 
@@ -43,16 +44,12 @@ public class PlayerAttacks : MonoBehaviour {
 
     }
 
-    private void FixedUpdate() {
-
-        
-
-    }
 
     #region ATTACKS
 
     public IEnumerator Attack00() {
         player.playerState = PlayerState.Attacking;
+        playerMain.playerState = PlayerState.Attacking;
         attackPhase++;
 
         yield return new WaitForSeconds(.2f);
@@ -60,51 +57,55 @@ public class PlayerAttacks : MonoBehaviour {
         
         yield return new WaitForSeconds(.4f);
         attacks[0].SetActive(false);
-        player.RotatePlayer();
+        playerMain.RotatePlayer();
 
         yield return new WaitForSeconds(.2f);
-        player.playerState = PlayerMain.PlayerState.Normal;
+        player.playerState = PlayerState.Normal;
+        playerMain.playerState = PlayerState.Normal;
         attackPhase = 0;
     }
 
     public IEnumerator Attack01() {
-        
         player.playerState = PlayerState.Attacking;
+        playerMain.playerState = PlayerState.Attacking;
         attacks[0].SetActive(false);
-        player.RotatePlayer();
+        playerMain.RotatePlayer();
         attackPhase++;
 
         yield return new WaitForSeconds(.1f);
-        rb.AddForce(new Vector2(player.mousePos.x - transform.position.x, player.mousePos.y - transform.position.y).normalized * 4, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(playerMain.mousePos.x - transform.position.x, playerMain.mousePos.y - transform.position.y).normalized * 4, ForceMode2D.Impulse);
         attacks[1].SetActive(true);
 
         yield return new WaitForSeconds(.5f);
         attacks[1].SetActive(false);
-        player.RotatePlayer();
+        playerMain.RotatePlayer();
         rb.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(.3f);
-        player.playerState = PlayerMain.PlayerState.Normal;
+        player.playerState = PlayerState.Normal;
+        playerMain.playerState = PlayerState.Normal;
         attackPhase = 0;
     }
 
     public IEnumerator Attack02() {
         player.playerState = PlayerState.Attacking;
+        playerMain.playerState = PlayerState.Attacking;
         attacks[1].SetActive(false);
-        player.RotatePlayer();
+        playerMain.RotatePlayer();
         attackPhase++;
 
         yield return new WaitForSeconds(.3f);
-        rb.AddForce(new Vector2(player.mousePos.x - transform.position.x, player.mousePos.y - transform.position.y).normalized * 4, ForceMode2D.Impulse);
+        rb.AddForce(new Vector2(playerMain.mousePos.x - transform.position.x, playerMain.mousePos.y - transform.position.y).normalized * 4, ForceMode2D.Impulse);
         attacks[2].SetActive(true);
 
         yield return new WaitForSeconds(.6f);
-        player.RotatePlayer();
+        playerMain.RotatePlayer();
         attacks[2].SetActive(false);
         rb.velocity = Vector2.zero;
 
         yield return new WaitForSeconds(.5f);
-        player.playerState = PlayerMain.PlayerState.Normal;
+        player.playerState = PlayerState.Normal;
+        playerMain.playerState = PlayerState.Normal;
         attackPhase = 0;
     }
 
@@ -117,7 +118,7 @@ public class PlayerAttacks : MonoBehaviour {
 
     void OnFire0() {
         //Debug.Log("Click");
-        if (player.playerState != PlayerState.Sprinting) {
+        if (playerMain.playerState != PlayerState.Dodging) {
 
             
 

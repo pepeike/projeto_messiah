@@ -16,12 +16,13 @@ public class HeartSystem : MonoBehaviour
     public Sprite cheio;
     public Sprite vazio;
 
-    public PlayerMain player;
+    public RenderFollow player;
+    public PlayerMain playerMain;
 
 
     private void Awake() {
         vida = vidaMaxima;
-        player = gameObject.GetComponent<PlayerMain>();
+        //player = GameObject.Find("Player Renderer").GetComponent<PlayerMain>();
     }
 
     
@@ -31,7 +32,7 @@ public class HeartSystem : MonoBehaviour
     {
         HealthLogic();
 
-        if (vida <= 0) { Destroy(gameObject); }
+        if (vida <= 0) { Destroy(GameObject.Find("Player Renderer")); }
 
     }
 
@@ -65,7 +66,7 @@ public class HeartSystem : MonoBehaviour
 
     void PlayerTakeDamage(int dmg) {
         if (vida > 0) {
-            player.playerState = PlayerMain.PlayerState.Wounded;
+            playerMain.playerState = PlayerMain.PlayerState.Wounded;
             vida -= dmg;
         }
     }

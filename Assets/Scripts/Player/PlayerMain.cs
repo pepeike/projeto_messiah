@@ -41,6 +41,8 @@ public class PlayerMain : MonoBehaviour {
 
     public Animator anim;
 
+    private GameObject parent;
+
     private SpriteRenderer sprite;
 
     private Vector2 movementInput; //input do jogador
@@ -52,6 +54,7 @@ public class PlayerMain : MonoBehaviour {
     public List<RaycastHit2D> castCollisions = new List<RaycastHit2D>(); //raycasts q detectam colisoes
 
     private Rigidbody2D rb; //rigidbody do player
+    private Rigidbody2D rb2;
 
     [HideInInspector]
     public Vector3 mousePos;
@@ -72,17 +75,26 @@ public class PlayerMain : MonoBehaviour {
     void Awake() //chamado antes d void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        rb2 = GetComponentInParent<Rigidbody2D>();
         playerState = PlayerState.Normal;
         col = GetComponent<CapsuleCollider2D>();
-        hurtbox = GetComponentInChildren<BoxCollider2D>(false);
+        hurtbox = GameObject.Find("hurtbox").GetComponent<BoxCollider2D>();
         cam = FindAnyObjectByType<Camera>(FindObjectsInactive.Exclude);
         
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = GetComponentInParent<SpriteRenderer>();
 
-
+        parent = GameObject.Find("Player Renderer");
+        if (parent == null) {
+            parent = GameObject.Find("Player Renderer (1)");
+        }
     }
 
     private void Update() {
+
+        transform.position = parent.transform.position;
+
+        //Debug.Log(playerState.ToString());
+
         switch (playerState) {
             case PlayerState.Normal:
                 RotatePlayer();
@@ -91,12 +103,12 @@ public class PlayerMain : MonoBehaviour {
             case PlayerState.Dodging:
                 Dodge();
                 break;
-                //case PlayerState.BouttaSprint:
-                //break;
-                //case PlayerState.Sprinting:
-                //break;
+                
 
         }
+
+        //parent.transform.position = transform.position;
+
     }
 
 
@@ -106,7 +118,7 @@ public class PlayerMain : MonoBehaviour {
         switch (playerState) {
             case PlayerState.Normal:
                 anim.SetBool("isDodging", false);
-                FixedMove();
+                //FixedMove();
 
                 break;
 
@@ -117,14 +129,6 @@ public class PlayerMain : MonoBehaviour {
                 FixedDodge();
 
                 break;
-            //case PlayerState.BouttaSprint:
-            // anim.SetBool("isSprinting", true);
-            //break;
-            //case PlayerState.Sprinting:
-            //FixedSprint();
-            //break;
-            //case PlayerState.SprintingStop:
-            //break;
             case PlayerState.Attacking:
                 break;
             case PlayerState.Wounded:
@@ -167,6 +171,8 @@ public class PlayerMain : MonoBehaviour {
         mouseX = mouse.x - transform.position.x;
         mouseY = mouse.y - transform.position.y;
 
+        Vector3 rotation = new Vector3(transform.position.x, transform.position.y, angle);
+
         rb.rotation = angle;
 
 
@@ -206,46 +212,28 @@ public class PlayerMain : MonoBehaviour {
         }
     }
 
-    void FixedMove() {
-        if (movementInput != Vector2.zero) {
-            bool success = TryMove(movementInput);
+    //void FixedMove() {
+    //    if (movementInput != Vector2.zero) {
+    //        bool success = TryMove(movementInput);
 
-            anim.SetFloat("velocity", speed);
+    //        anim.SetFloat("velocity", speed);
 
-            if (!success) {
-                success = TryMove(new Vector2(movementInput.x, 0)); //se o player estiver encostado numa parede ele ainda pode deslizar verticalmente
+    //        if (!success) {
+    //            success = TryMove(new Vector2(movementInput.x, 0)); //se o player estiver encostado numa parede ele ainda pode deslizar verticalmente
 
-                if (!success) {
-                    success = TryMove(new Vector2(0, movementInput.y)); //mesma coisa mas horizontalmente
-                }
-            }
+    //            if (!success) {
+    //                success = TryMove(new Vector2(0, movementInput.y)); //mesma coisa mas horizontalmente
+    //            }
+    //        }
 
-        }
+    //    }
 
-        if (movementInput == Vector2.zero) {
-            anim.SetFloat("velocity", 0);
-        }
-    }
+    //    if (movementInput == Vector2.zero) {
+    //        anim.SetFloat("velocity", 0);
+    //    }
+    //}
 
-    void FixedSprint() {
-        if (movementInput != Vector2.zero) {
-            bool success = TrySprint(movementInput);
 
-            anim.SetFloat("velocity", speed);
-
-            if (!success) {
-                success = TrySprint(new Vector2(movementInput.x, 0)); //se o player estiver encostado numa parede ele ainda pode deslizar verticalmente
-
-                if (!success) {
-                    success = TrySprint(new Vector2(0, movementInput.y)); //mesma coisa mas horizontalmente
-                }
-            }
-        }
-
-        if (movementInput == Vector2.zero) {
-            anim.SetFloat("velocity", 0);
-        }
-    }
 
     private bool TryMove(Vector2 direction) { //metodo pra detectar colisoes
         int count = rb.Cast(
@@ -262,20 +250,7 @@ public class PlayerMain : MonoBehaviour {
         }
     }
 
-    private bool TrySprint(Vector2 direction) {
-        int count = rb.Cast(
-                direction, //direcao do input
-                movementFilter,
-                castCollisions,
-                speed * Time.fixedDeltaTime + collisionOffset); //distancia dos raycasts 
 
-        if (count == 0) { //se o player n estiver encostado em nada ele pode se mover
-            rb.MovePosition(rb.position + direction * speed * sprintMultiplier * Time.fixedDeltaTime);
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     private bool TryDodge(Vector2 direction) {
         int count = rb.Cast(
@@ -296,6 +271,7 @@ public class PlayerMain : MonoBehaviour {
 
     void OnMove(InputValue inputValue) { //detecta o input do jogador (metodo derivado do InputSystem)
         movementInput = inputValue.Get<Vector2>();
+        anim.SetFloat("velocity", 5);
     }
 
     void OnDodge(InputValue inputValue) {
@@ -324,44 +300,6 @@ public class PlayerMain : MonoBehaviour {
 
     #endregion
 
-    #region ACTIONS
-
-    //void OnFire0() {
-    //    playerState = PlayerState.Attacking;
-    //    switch (attackPhase) {
-    //        case 0:
-    //            StartCoroutine(atk.Attack00());
-    //            break;
-    //        case 1:
-    //            StopCoroutine(atk.Attack00());
-    //            StartCoroutine(atk.Attack01());
-    //            break;
-    //        case 2:
-    //            StopCoroutine(atk.Attack01());
-    //            StartCoroutine(atk.Attack02());
-    //            break;
-
-    //    }
-
-    //}
-
-
-
-    //IEnumerator Attack00() {
-    //    state = State.Attacking;
-    //    yield return new WaitForSeconds(.2f);
-    //    attackHitboxes[0].SetActive(true);
-    //    attackPhase++;
-    //    yield return new WaitForSeconds(.5f);
-    //    attack.SetActive(false);
-    //    state = State.Normal;
-    //}
-
-    //IEnumerator Attack01() {
-
-    //}
-
-    #endregion
 
     private void EnableInvincibility() {
         hurtbox.enabled = false;
@@ -387,13 +325,16 @@ public class PlayerMain : MonoBehaviour {
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag("Enemy Hitbox")) {
-            Vector2 _dirAttacker = collision.transform.position - transform.position;
-            rb.AddForce(-_dirAttacker * 5, ForceMode2D.Impulse);
-            StartCoroutine(Recover(recoverTime));
-            StartCoroutine(DamageFlicker(flickerAmnt));
-        }
-    }
+    
+
+    //private void OnTriggerEnter2D(Collider2D collision) {
+    //    if (collision.gameObject.CompareTag("Enemy Hitbox")) {
+    //        Vector2 _dirAttacker = collision.transform.position - transform.position;
+    //        rb.AddForce(-_dirAttacker * 5, ForceMode2D.Impulse);
+    //        rb2.AddForce(-_dirAttacker * 5, ForceMode2D.Impulse);
+    //        StartCoroutine(Recover(recoverTime));
+    //        StartCoroutine(DamageFlicker(flickerAmnt));
+    //    }
+    //}
 
 }

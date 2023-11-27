@@ -13,10 +13,10 @@ public class Enemy1 : MonoBehaviour {
     [SerializeField]
     private int hitPoints = 10;
 
-    [SerializeField]
-    private float minAtkDist = 2;
+    //[SerializeField]
+    //private float minAtkDist = 2;
 
-    private Animator anim;
+    //private Animator anim;
 
     public GameObject Player;
     private Vector3 playerPos;
@@ -24,16 +24,11 @@ public class Enemy1 : MonoBehaviour {
     //private float difY;
     //private Vector2 moveDir;
 
-    private Vector3 directionToTarget;
-    private Vector3 directionToPlayer;
-    private Vector3 localScale;
+    
 
     private float playerDist;
 
-    private float angle;
-
-    private float playerX;
-    private float playerY;
+    
 
     private Camera cam;
     private SpriteRenderer sprite;
@@ -60,11 +55,11 @@ public class Enemy1 : MonoBehaviour {
         Player = GameObject.FindGameObjectWithTag("Player");
         state = EnemyState.Idle;
         cam = GameObject.FindAnyObjectByType<Camera>();
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
 
 
-        localScale = transform.localScale;
+        //localScale = transform.localScale;
 
         levelManager = FindAnyObjectByType<LevelManager>();
 
@@ -102,7 +97,7 @@ public class Enemy1 : MonoBehaviour {
             case EnemyState.Idle:
                 //StartCoroutine(Idle());
                 if (Player != null) {
-                    RotateEnemy();
+                    //RotateEnemy();
                     rb.velocity = Vector3.zero;
                 }
 
@@ -139,43 +134,16 @@ public class Enemy1 : MonoBehaviour {
             rb.velocity = Vector2.zero;
             sprite.color = Color.magenta;
             state = EnemyState.Damaged;
-            StartCoroutine(Knockback());
+            //StartCoroutine(Knockback());
             hitPoints -= dmg;
         }
     }
 
-    private void RotateEnemy() {
-
-        if (Player != null) {
-            playerPos = Player.transform.position;
-        }
-
-
-        //Vector3 pp = cam.ScreenToWorldPoint(playerPos);
-
-        float AngleRad = Mathf.Atan2(playerPos.y - transform.position.y, playerPos.x - transform.position.x);
-
-        angle = (180 / Mathf.PI) * AngleRad;
-
-        playerX = playerPos.x - transform.position.x;
-        playerY = playerPos.y - transform.position.y;
-
-        rb.rotation = angle;
-
-        //Debug.Log(playerPos);
-
-
-
-    }
+    
 
     
 
-    IEnumerator Knockback() {
-        //rb.velocity = Vector3.zero;
-        //rb.velocity = Vector2.zero;
-        rb.AddForce(new Vector2(-directionToPlayer.x, -directionToPlayer.y) * 2, ForceMode2D.Impulse);
-        yield return new WaitForSeconds(.2f);
-    }
+    
 
 
 
