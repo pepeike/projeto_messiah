@@ -22,6 +22,7 @@ public class HeartSystem : MonoBehaviour
 
     private void Awake() {
         vida = vidaMaxima;
+        
         //player = GameObject.Find("Player Renderer").GetComponent<PlayerMain>();
     }
 

@@ -93,6 +93,9 @@ public class PlayerMain : MonoBehaviour {
 
         transform.position = parent.transform.position;
 
+        //anim.SetFloat("mousePosX", mouseX);
+        //anim.SetFloat("mousePosY", mouseY);
+
         //Debug.Log(playerState.ToString());
 
         switch (playerState) {

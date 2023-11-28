@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fe7812df5639da4448c51710a4788eac
+guid: ea9acc65d868be64e8abfc09cb36c413
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,106 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: eros-ataque_0
+      name: espada_movimento_1_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 2
+        x: 5
+        y: 13
         width: 33
         height: 48
       alignment: 9
-      pivot: {x: 0.5300988, y: 0.5088684}
+      pivot: {x: 0.5294205, y: 0.49325776}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 733e43c73d5b323459c9563d43b66311
-      internalID: 971184893
+      spriteID: 74757d7290c9ffe4d97848f48933dc8d
+      internalID: -859986925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eros-ataque_1
+      name: espada_movimento_1_1
       rect:
         serializedVersion: 2
-        x: 179
-        y: 2
+        x: 58
+        y: 13
+        width: 31
+        height: 48
+      alignment: 9
+      pivot: {x: 0.44780216, y: 0.49460626}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23a9a18b8bda5546bf284ac85e01aea
+      internalID: 1862622628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: espada_movimento_1_2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 11
         width: 55
         height: 60
       alignment: 9
-      pivot: {x: 0.6836298, y: 0.4089554}
+      pivot: {x: 0.7035905, y: 0.39536068}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cb84fe8645ca334d9d0cddc60ff71eb
-      internalID: 807821814
+      spriteID: 5de693cd855ae3d408e13f2245ac5130
+      internalID: -1246343387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eros-ataque_2
+      name: espada_movimento_1_3
       rect:
         serializedVersion: 2
-        x: 341
-        y: 2
-        width: 101
-        height: 59
+        x: 169
+        y: 12
+        width: 44
+        height: 57
       alignment: 9
-      pivot: {x: 0.30105743, y: 0.47251093}
+      pivot: {x: 0.34112862, y: 0.4023443}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27d639fa92ff56c4b8d44a32df7fc622
-      internalID: -657238047
+      spriteID: 0effe9631ca76064f9716f0f1f174556
+      internalID: 19250811
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eros-ataque_3
+      name: espada_movimento_1_4
       rect:
         serializedVersion: 2
-        x: 512
-        y: 2
-        width: 70
-        height: 59
+        x: 266
+        y: 11
+        width: 44
+        height: 57
       alignment: 9
-      pivot: {x: 0.28777292, y: 0.48836634}
+      pivot: {x: 0.35583842, y: 0.3989377}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc8e0a2991348d24e87cb831032c872f
-      internalID: -305502826
+      spriteID: 49c8080d0ab9364449412b6801028c08
+      internalID: 1108573264
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: eros-ataque_4
+      name: espada_movimento_1_5
       rect:
         serializedVersion: 2
-        x: 670
-        y: 2
-        width: 72
-        height: 59
+        x: 354
+        y: 11
+        width: 44
+        height: 57
       alignment: 9
-      pivot: {x: 0.2782084, y: 0.48840028}
+      pivot: {x: 0.35142517, y: 0.3955311}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c4f2ac39cca4234bafe82054dc0728e
-      internalID: -504802982
+      spriteID: 80dec5561c327794c8e55de45a382fcd
+      internalID: 1081195744
       vertices: []
       indices: 
       edges: []
@@ -225,11 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      eros-ataque_0: 971184893
-      eros-ataque_1: 807821814
-      eros-ataque_2: -657238047
-      eros-ataque_3: -305502826
-      eros-ataque_4: -504802982
+      espada_movimento_1_0: -859986925
+      espada_movimento_1_1: 1862622628
+      espada_movimento_1_2: -1246343387
+      espada_movimento_1_3: 19250811
+      espada_movimento_1_4: 1108573264
+      espada_movimento_1_5: 1081195744
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

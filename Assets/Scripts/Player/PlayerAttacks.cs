@@ -15,8 +15,11 @@ public class PlayerAttacks : MonoBehaviour {
     public GameObject[] attacks;
     private int attackPhase = 0;
 
+    [SerializeField] private float atkTimer;
+    private bool canAtk;
+
     [SerializeField]private Animator anim;
-    [SerializeField]private Animator animTurret;
+    [SerializeField]private Animator animAtk;
 
     private Rigidbody2D rb;
 
@@ -38,6 +41,7 @@ public class PlayerAttacks : MonoBehaviour {
         
         rb = GetComponent<Rigidbody2D>();
 
+        canAtk = true;
 
         foreach (GameObject attack in attacks) {
 
@@ -47,6 +51,17 @@ public class PlayerAttacks : MonoBehaviour {
 
     }
 
+    void Atk() {
+        //canAtk = false;
+        animAtk.SetTrigger("atk");
+        attacks[0].SetActive(true);
+    }
+
+    void AtkEnd() {
+        attacks[0].SetActive(false);
+        StartCoroutine(atkCooldown(atkTimer));
+    }
+
 
     #region ATTACKS
 
@@ -54,8 +69,9 @@ public class PlayerAttacks : MonoBehaviour {
         player.playerState = PlayerState.Attacking;
         playerMain.playerState = PlayerState.Attacking;
         attackPhase++;
+        //anim.SetTrigger("Attacking1");
 
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(.3f);
         attacks[0].SetActive(true);
         
         yield return new WaitForSeconds(.4f);
@@ -121,31 +137,40 @@ public class PlayerAttacks : MonoBehaviour {
 
     void OnFire0() {
         //Debug.Log("Click");
-        if (playerMain.playerState != PlayerState.Dodging) {
+        if (playerMain.playerState != PlayerState.Dodging && canAtk) {
 
+            canAtk = false;
             
 
-            if (attackPhase == 0) {
-                StartCoroutine(Attack00());
+            //if (attackPhase == 0) {
+                anim.SetTrigger("Attacking1");
+                //StartCoroutine(Attack00());
                 
                 
-            } else if (attackPhase == 1) {
-                //StopCoroutine(Attack00());
-                StopAllCoroutines();
-                StartCoroutine(Attack01());
-            } else if (attackPhase == 2) {
-            //StopCoroutine(Attack01());
-            StopAllCoroutines();
-            StartCoroutine(Attack02());
-        }
+            //} 
+        //    else if (attackPhase == 1) {
+        //        //StopCoroutine(Attack00());
+        //        StopAllCoroutines();
+        //        StartCoroutine(Attack01());
+        //    } else if (attackPhase == 2) {
+        //    //StopCoroutine(Attack01());
+        //    StopAllCoroutines();
+        //    StartCoroutine(Attack02());
+        //}
 
     }
 
 
-        if (attackPhase > 3) { attackPhase = 0; }
+        if (attackPhase > 1) { attackPhase = 0; }
 
 
 
     }
+
+    IEnumerator atkCooldown(float atkTimer) {
+        yield return new WaitForSeconds(atkTimer);
+        canAtk = true;
+    }
+
 
 }
