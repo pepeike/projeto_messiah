@@ -85,7 +85,10 @@ public class PlayerMain : MonoBehaviour {
 
         parent = GameObject.Find("Player Renderer");
         if (parent == null) {
-            parent = GameObject.Find("Player Renderer (1)");
+            parent = GameObject.Find("Player Renderer 1");
+            if (parent == null) {
+                parent = GameObject.Find("Player Renderer 1(Clone)");
+            }
         }
     }
 

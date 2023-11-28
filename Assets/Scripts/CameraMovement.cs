@@ -9,6 +9,8 @@ public class CameraMovement : MonoBehaviour
 
     public Transform room;
 
+    public LevelManager levelManager;
+
     private Transform playerToFollow;
 
     private Camera _cam;
@@ -31,7 +33,10 @@ public class CameraMovement : MonoBehaviour
 
     private void Start() {
 
-        playerToFollow = GameObject.FindGameObjectWithTag("Player").transform;
+        
+            
+        
+        
 
         float vertExtent = _cam.orthographicSize;
         float horzExtent = vertExtent * Screen.width / Screen.height;
@@ -49,12 +54,17 @@ public class CameraMovement : MonoBehaviour
 
     private void FixedUpdate() {
 
+        
+
         transform.position = new Vector3(targetPos.x, targetPos.y, transform.position.z);
 
     }
 
     private void LateUpdate() {
 
+        if (playerToFollow == null) {
+            StartCoroutine(WaitForPlayer());
+        }
 
         Vector3 v3 = transform.position;
         v3.x = Mathf.Clamp(v3.x, minX, maxX);
@@ -62,11 +72,20 @@ public class CameraMovement : MonoBehaviour
         v3.z = transform.position.z;
         transform.position = v3;
 
+        if (playerToFollow != null) {
+            FollowPlayer();
+        }
+        //FollowPlayer();
 
-        FollowPlayer();
 
 
+    }
 
+    IEnumerator WaitForPlayer() {
+        if (playerToFollow == null) {
+            yield return new WaitForSeconds(1);
+            playerToFollow = levelManager.player.transform;
+        }
     }
 
     void NewRoom() {

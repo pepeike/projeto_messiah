@@ -29,11 +29,11 @@ public class HeartSystem : MonoBehaviour
     
 
    
-    void Update()
+    void LateUpdate()
     {
         HealthLogic();
 
-        if (vida <= 0) { Destroy(GameObject.Find("Player Renderer")); }
+        if (vida <= 0) { Destroy(player.gameObject); }
 
     }
 

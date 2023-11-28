@@ -76,8 +76,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1795686637
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -745444306, guid: 8ffc33107ec9918469f4c74b5f2741c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,10 +175,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 6
-  minAtkDist: 2
+  minAtkDist: 3
   Player: {fileID: 0}
   atk: {fileID: 8031090333796336045}
-  enemySpeed: 2
+  enemySpeed: 3
   turret: {fileID: 8490618048580190282}
   state: 0
 --- !u!95 &4558577224008717668
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a61d4b562d1e0489cf7f365c3fa984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyDmg: 2
+  enemyDmg: 1
 --- !u!95 &7816390615382112641
 Animator:
   serializedVersion: 5
