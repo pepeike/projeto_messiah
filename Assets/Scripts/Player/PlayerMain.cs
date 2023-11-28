@@ -171,6 +171,9 @@ public class PlayerMain : MonoBehaviour {
         mouseX = mouse.x - transform.position.x;
         mouseY = mouse.y - transform.position.y;
 
+        anim.SetFloat("mousePosX", mouseX);
+        anim.SetFloat("mousePosY", mouseY);
+
         Vector3 rotation = new Vector3(transform.position.x, transform.position.y, angle);
 
         rb.rotation = angle;

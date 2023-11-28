@@ -15,6 +15,9 @@ public class PlayerAttacks : MonoBehaviour {
     public GameObject[] attacks;
     private int attackPhase = 0;
 
+    [SerializeField]private Animator anim;
+    [SerializeField]private Animator animTurret;
+
     private Rigidbody2D rb;
 
     //private Camera cam;

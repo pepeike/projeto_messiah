@@ -45,6 +45,9 @@ public class Enemy2 : MonoBehaviour {
 
     [SerializeField]
     private GameObject atk;
+    private SpriteRenderer atkSprite;
+
+    private Animator turretAnim;
 
     private short atkCount = 0;
 
@@ -63,6 +66,8 @@ public class Enemy2 : MonoBehaviour {
         cam = GameObject.FindAnyObjectByType<Camera>();
         anim = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
+        atkSprite = atk.GetComponent<SpriteRenderer>();
+        turretAnim = turret.GetComponentInChildren<Animator>();
         
 
         localScale = transform.localScale;
@@ -92,6 +97,8 @@ public class Enemy2 : MonoBehaviour {
         directionToTarget = (target.position - transform.position).normalized;
         
         directionToPlayer = (Player.transform.position - transform.position).normalized;
+
+        turret.position = transform.position;
 
         //Debug.Log(directionToTarget);
         //Debug.Log(playerDist);
@@ -204,6 +211,10 @@ public class Enemy2 : MonoBehaviour {
 
     }
 
+    void PlayAtk() {
+        turretAnim.SetTrigger("atk");
+    }
+
 
 
     public void Damage(int dmg) {
@@ -229,6 +240,9 @@ public class Enemy2 : MonoBehaviour {
         float AngleRad = Mathf.Atan2(playerPos.y - transform.position.y, playerPos.x - transform.position.x);
 
         angle = (180 / Mathf.PI) * AngleRad;
+        if (angle > 90) {
+            
+        }
 
         playerX = playerPos.x - transform.position.x;
         playerY = playerPos.y - transform.position.y;
@@ -242,8 +256,11 @@ public class Enemy2 : MonoBehaviour {
     }
 
     IEnumerator EnemyAttack() {
+        
         rb.velocity = Vector3.zero;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
+        anim.SetTrigger("attack");
+        yield return new WaitForSeconds(.3f);
         atk.SetActive(true);
         yield return new WaitForSeconds(.2f);
         atk.SetActive(false);
