@@ -17,7 +17,7 @@ public class PlayerMain : MonoBehaviour {
     }
 
     [SerializeField]
-    private float speed; //velocidade de movimento
+    public float speed; //velocidade de movimento
     [SerializeField]
     private float dodgeForce;
     [SerializeField]
