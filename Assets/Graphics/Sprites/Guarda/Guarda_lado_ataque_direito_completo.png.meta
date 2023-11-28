@@ -1,0 +1,303 @@
+fileFormatVersion: 2
+guid: 63726f9f012946a4d8a356fc277b61a5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Guarda_lado_ataque_direito_completo_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 4
+        width: 21
+        height: 55
+      alignment: 9
+      pivot: {x: 0.37331825, y: 0.49309015}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eb31e9858ffa5e4087dc1f722190719
+      internalID: 1590008818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guarda_lado_ataque_direito_completo_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 4
+        width: 21
+        height: 55
+      alignment: 9
+      pivot: {x: 0.37637076, y: 0.49291936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44a44a84b4b602f4fba68db4f7a639e0
+      internalID: -1822716957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guarda_lado_ataque_direito_completo_2
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 4
+        width: 21
+        height: 55
+      alignment: 9
+      pivot: {x: 0.3825524, y: 0.49527955}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4db3beda4eb0024ea4631cdd1ab82bc
+      internalID: 1825399870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guarda_lado_ataque_direito_completo_3
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 4
+        width: 42
+        height: 55
+      alignment: 9
+      pivot: {x: 0.19092742, y: 0.49291936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d64014e4fd5e940a6a737c7e0e50bb
+      internalID: -1378058886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guarda_lado_ataque_direito_completo_4
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 4
+        width: 42
+        height: 55
+      alignment: 9
+      pivot: {x: 0.1924729, y: 0.49291936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e653c68b0047a53479db6416a95e5194
+      internalID: -147689873
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guarda_lado_ataque_direito_completo_5
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 4
+        width: 42
+        height: 55
+      alignment: 9
+      pivot: {x: 0.19121079, y: 0.49153534}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1039c7aa4ca172245a481dca0116dfca
+      internalID: 1856332608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guarda_lado_ataque_direito_completo_6
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 4
+        width: 35
+        height: 55
+      alignment: 9
+      pivot: {x: 0.2262085, y: 0.49189627}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa5ec1ce008f00f408428fb3d5b8d1b3
+      internalID: -644571002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guarda_lado_ataque_direito_completo_7
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 4
+        width: 21
+        height: 55
+      alignment: 9
+      pivot: {x: 0.37619165, y: 0.49189627}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43a0676666d39bf45b34ea01f749e46d
+      internalID: 762338396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Guarda_lado_ataque_direito_completo_0: 1590008818
+      Guarda_lado_ataque_direito_completo_1: -1822716957
+      Guarda_lado_ataque_direito_completo_2: 1825399870
+      Guarda_lado_ataque_direito_completo_3: -1378058886
+      Guarda_lado_ataque_direito_completo_4: -147689873
+      Guarda_lado_ataque_direito_completo_5: 1856332608
+      Guarda_lado_ataque_direito_completo_6: -644571002
+      Guarda_lado_ataque_direito_completo_7: 762338396
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
