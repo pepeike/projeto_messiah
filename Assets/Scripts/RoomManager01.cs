@@ -56,7 +56,7 @@ public class RoomManager01 : MonoBehaviour {
 
             if (enemy1 != null) {
                 for (int i = enemy1Spawns.Length - 1; i >= 0; i--) {
-                    GameObject enemy = Instantiate(enemy1, enemy1Spawns[i].transform.position, Quaternion.identity);
+                    GameObject enemy = Instantiate(enemy1, enemy1Spawns[i].transform.position, Quaternion.identity, enemy1Spawns[i]);
                     levelManager.enemies.Add(enemy);
 
                     //enemies.Add(enemy);
@@ -65,7 +65,7 @@ public class RoomManager01 : MonoBehaviour {
 
             if (enemy2 != null) {
                 for (int i = enemy2Spawns.Length - 1; i >= 0; i--) {
-                    GameObject enemy = Instantiate(enemy2, enemy2Spawns[i].transform.position, Quaternion.identity);
+                    GameObject enemy = Instantiate(enemy2, enemy2Spawns[i].transform.position, Quaternion.identity, enemy2Spawns[i]);
                     levelManager.enemies.Add(enemy);
                 }
             }

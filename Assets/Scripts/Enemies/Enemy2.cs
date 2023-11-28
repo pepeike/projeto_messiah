@@ -94,9 +94,12 @@ public class Enemy2 : MonoBehaviour {
 
         //RotateEnemy();
 
-        directionToTarget = (target.position - transform.position).normalized;
-        
-        directionToPlayer = (Player.transform.position - transform.position).normalized;
+        if (target != null) {
+            directionToTarget = (target.position - transform.position).normalized;
+
+
+            directionToPlayer = (Player.transform.position - transform.position).normalized;
+        }
 
         turret.position = transform.position;
 

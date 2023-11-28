@@ -30,7 +30,7 @@ public class LevelManager : MonoBehaviour {
 
     private void Start() {
 
-        player = GameObject.Find("Player Renderer 1");
+        player = GameObject.Find("Player Renderer 1(Clone)");
         GetPlayer();
 
     }
