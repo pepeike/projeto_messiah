@@ -83,19 +83,20 @@ public class CameraMovement : MonoBehaviour
 
     IEnumerator WaitForPlayer() {
         if (playerToFollow == null) {
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(.5f);
             playerToFollow = levelManager.player.transform;
         }
     }
 
-    void NewRoom() {
+    void NewRoom(float yRoom) {
         float vertExtent = _cam.orthographicSize;
         float horzExtent = vertExtent * Screen.width / Screen.height;
+        float xRoom = yRoom * 2.7f;
 
-        minX = (horzExtent - roomX / 2) + room.position.x;
-        maxX = (roomX / 2 - horzExtent) + room.position.x;
-        minY = (vertExtent - roomY / 2) + room.position.y;
-        maxY = (roomY / 2 - vertExtent) + room.position.y;
+        minX = (horzExtent - xRoom / 2) + room.position.x;
+        maxX = (xRoom / 2 - horzExtent) + room.position.x;
+        minY = (vertExtent - yRoom / 2) + room.position.y;
+        maxY = (yRoom / 2 - vertExtent) + room.position.y;
     }
 
     void FollowPlayer() {

@@ -223,7 +223,7 @@ public class RenderFollow : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Enemy Hitbox")) {
             Vector2 _dirAttacker = collision.transform.position - transform.position;
-            rb.AddForce(-_dirAttacker * 4, ForceMode2D.Impulse);
+            rb.AddForce(-_dirAttacker * 3, ForceMode2D.Impulse);
             playerState = PlayerState.Wounded;
             //playerMain.Fuck();
             StartCoroutine(Recover(recoverTime));

@@ -614,6 +614,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 912613542232492314, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7215
+      objectReference: {fileID: 0}
+    - target: {fileID: 912613542232492314, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7215
+      objectReference: {fileID: 0}
+    - target: {fileID: 912613542232492314, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.7215
+      objectReference: {fileID: 0}
+    - target: {fileID: 912613542232492314, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 912613542232492314, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.13
+      objectReference: {fileID: 0}
     - target: {fileID: 2822571124580635514, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: m_Size.x
       value: 0.9715328
@@ -624,11 +644,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5139951741457244099, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5201798673060731679, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: m_Size.x
-      value: 3.8246574
+      value: 4.3624797
       objectReference: {fileID: 0}
     - target: {fileID: 5201798673060731679, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: m_Size.y
@@ -636,7 +656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5201798673060731679, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: m_Offset.x
-      value: 1.1623287
+      value: 1.5666542
       objectReference: {fileID: 0}
     - target: {fileID: 5201798673060731679, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: m_Offset.y
@@ -672,7 +692,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5291184506658386337, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5554186953932645505, guid: a6bfa014be0467948a286a672031c4fa, type: 3}
       propertyPath: lPoints.Array.data[0]

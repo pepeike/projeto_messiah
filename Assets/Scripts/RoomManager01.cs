@@ -52,7 +52,7 @@ public class RoomManager01 : MonoBehaviour {
         if (collision.gameObject.CompareTag("Player")) {
             camMove.room = gameObject.transform;
             cam.orthographicSize = camSize;
-            cam.BroadcastMessage("NewRoom");
+            cam.BroadcastMessage("NewRoom", col.size.y);
 
             if (enemy1 != null) {
                 for (int i = enemy1Spawns.Length - 1; i >= 0; i--) {
