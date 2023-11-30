@@ -25,6 +25,8 @@ public class RenderFollow : MonoBehaviour {
     [SerializeField] private float recoverTime;
     [SerializeField] private int flickerAmnt;
 
+    public AudioSource[] soundFX;
+
     [SerializeField] private BoxCollider2D hurtbox;
 
     public PlayerState playerState;
@@ -41,9 +43,12 @@ public class RenderFollow : MonoBehaviour {
 
     private int dodgeCount = 0;
 
+    public bool canMove;
+
     #endregion
 
     private void Awake() {
+        canMove = true;
         core = GameObject.Find("Player");
         playerMain = GetComponentInChildren<PlayerMain>();
         rb = GetComponent<Rigidbody2D>();
@@ -96,7 +101,7 @@ public class RenderFollow : MonoBehaviour {
     }
 
     void FixedMove() {
-        if (movementInput != Vector2.zero) {
+        if (movementInput != Vector2.zero && canMove) {
             bool success = TryMove(movementInput);
 
             anim.SetFloat("velocity", 5);
@@ -163,6 +168,7 @@ public class RenderFollow : MonoBehaviour {
     void OnDodge(InputValue inputValue) {
         if (dodgeCount == 0 && playerState != PlayerState.Attacking) {
             //EnableInvincibility();
+            soundFX[2].Play();
             dodgeCount++;
             playerState = PlayerState.Dodging;
             dodgeSpeed = dodgeForce;
@@ -222,6 +228,7 @@ public class RenderFollow : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag("Enemy Hitbox")) {
+            soundFX[1].Play();
             Vector2 _dirAttacker = collision.transform.position - transform.position;
             rb.AddForce(-_dirAttacker * 3, ForceMode2D.Impulse);
             playerState = PlayerState.Wounded;

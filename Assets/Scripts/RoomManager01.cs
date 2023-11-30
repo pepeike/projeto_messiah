@@ -19,6 +19,12 @@ public class RoomManager01 : MonoBehaviour {
     public Transform[] enemy2Spawns;
     private GameObject[] enemies;
 
+    public AudioSource[] musics;
+    private int currentMusicIndex;
+    public bool changeMusic = false;
+    public bool changeMusicSpecific = false;
+    public int targetMusicIndex;
+
     //[SerializeField]
     //private Camera roomCam;
 
@@ -29,11 +35,13 @@ public class RoomManager01 : MonoBehaviour {
     private PlayerMain playerScript;
 
     private void Awake() {
+        
         col = GetComponent<BoxCollider2D>();
         cam = Camera.main;
         camMove = cam.GetComponent<CameraMovement>();
         levelManager = FindAnyObjectByType<LevelManager>();
-        
+        musics = cam.GetComponents<AudioSource>();
+        currentMusicIndex = 0;
     }
 
     private void Start() {
@@ -70,6 +78,17 @@ public class RoomManager01 : MonoBehaviour {
                 }
             }
 
+            Debug.Log(musics[0].ToString() + " " + musics[1].ToString());
+
+            if (changeMusic) {
+
+                PlayNextSong();
+            }
+
+            if (changeMusicSpecific) {
+                PlaySong(targetMusicIndex);
+            }
+
             //roomCam.gameObject.SetActive(true);
             //playerScript.cam = roomCam;
             Debug.Log("Room Entered");
@@ -95,10 +114,25 @@ public class RoomManager01 : MonoBehaviour {
                 }
             }
 
+            
 
             //    roomCam.gameObject.SetActive(false);
             //    Debug.Log("Room Left");
         }
+    }
+
+    void PlayNextSong() {
+        if (currentMusicIndex < musics.Length - 1) {
+            musics[currentMusicIndex].Stop();
+            currentMusicIndex++;
+            musics[currentMusicIndex].Play();
+        }
+    }
+
+    void PlaySong(int songIndex) {
+        musics[currentMusicIndex].Stop();
+        musics[songIndex].Play();
+        currentMusicIndex = songIndex;
     }
 
 

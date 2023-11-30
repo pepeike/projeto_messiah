@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss1 : MonoBehaviour
-{
+public class Boss1 : MonoBehaviour {
     public enum BossState {
         Idle,
         Moving,
@@ -22,6 +20,8 @@ public class Boss1 : MonoBehaviour
 
     private int tickTimer = 0;
     private int tickTarget = 10;
+
+    public AudioSource[] Boss1SFX;
 
     private Animator anim;
     public GameObject chargeBox;
@@ -68,6 +68,8 @@ public class Boss1 : MonoBehaviour
     private Rigidbody2D rb;
     public Rigidbody2D turret;
 
+    private int cont = 0;
+
     public BossState state;
 
     private void Awake() {
@@ -112,7 +114,7 @@ public class Boss1 : MonoBehaviour
         if (Player != null) {
             directionToPlayer = (Player.transform.position - transform.position).normalized;
         }
-       
+
 
         turret.gameObject.transform.position = transform.position;
 
@@ -192,7 +194,7 @@ public class Boss1 : MonoBehaviour
 
         if (tickTimer == tickTarget) {
             tickTimer = 0;
-            
+
             state = BossState.ChargeWindup;
             StartCoroutine(ChargeAttack());
         }
@@ -206,7 +208,7 @@ public class Boss1 : MonoBehaviour
                     //Debug.Log("Attacking");
                 } else {
                     tickTimer++;
-
+                    Boss1SFX[2].Play();
                     state = BossState.Moving;
                     //Debug.Log("Moving");
                 }
@@ -235,18 +237,19 @@ public class Boss1 : MonoBehaviour
                     //Debug.Log("Idle");
                 }
             } else if (state == BossState.RangeAttack) {
+                Boss1SFX[2].Play();
                 state = BossState.Moving;
             }
 
         }
-        
+
 
     }
 
     void Move() {
         //rb.AddForce(moveDir * enemySpeed);
         if (Player != null) {
-
+            
             rb.velocity = new Vector2(directionToPlayer.x, directionToPlayer.y) * enemySpeed;
         }
 
@@ -280,6 +283,7 @@ public class Boss1 : MonoBehaviour
     }
 
     void Fire() {
+        Boss1SFX[1].Play();
         Instantiate(projectile, projectilePos.transform.position, turret.transform.rotation, projectilePos);
     }
 
@@ -316,6 +320,7 @@ public class Boss1 : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         anim.SetTrigger("attack");
         yield return new WaitForSeconds(.3f);
+        Boss1SFX[0].Play();
         atk.SetActive(true);
         yield return new WaitForSeconds(.2f);
         atk.SetActive(false);
@@ -352,6 +357,7 @@ public class Boss1 : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         sprite.color = Color.white;
         yield return new WaitForSeconds(.2f);
+        Boss1SFX[3].Play();
         chargeBox.SetActive(true);
         rb.velocity = directionToEnemy * enemySpeed * 8;
         //Debug.Log(directionToEnemy * enemySpeed * 10);
@@ -365,6 +371,7 @@ public class Boss1 : MonoBehaviour
     IEnumerator Knockback() {
         //rb.velocity = Vector3.zero;
         //rb.velocity = Vector2.zero;
+        Boss1SFX[4].Play();
         rb.AddForce(new Vector2(-directionToPlayer.x, -directionToPlayer.y) * 2, ForceMode2D.Impulse);
         yield return new WaitForSeconds(.2f);
         state = BossState.Attacking;

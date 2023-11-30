@@ -13,6 +13,8 @@ public class Enemy2 : MonoBehaviour {
     [SerializeField]
     private int hitPoints = 10;
 
+    public AudioSource[] guardSFX;
+
     [SerializeField]
     private float minAtkDist = 2;
 
@@ -129,6 +131,7 @@ public class Enemy2 : MonoBehaviour {
                 break;
             case EnemyState.Moving:
                 if (Player != null || target != null) {
+
                     
                     RotateEnemy();
                     Move();
@@ -167,6 +170,7 @@ public class Enemy2 : MonoBehaviour {
                 //Debug.Log("Attacking");
             } else {
                 sprite.color = Color.cyan;
+                guardSFX[1].Play();
                 state = EnemyState.Moving;
                 //Debug.Log("Moving");
             }
@@ -264,6 +268,7 @@ public class Enemy2 : MonoBehaviour {
         yield return new WaitForSeconds(.2f);
         anim.SetTrigger("attack");
         yield return new WaitForSeconds(.3f);
+        guardSFX[0].Play();
         atk.SetActive(true);
         yield return new WaitForSeconds(.2f);
         atk.SetActive(false);
@@ -283,6 +288,7 @@ public class Enemy2 : MonoBehaviour {
     IEnumerator Knockback() {
         //rb.velocity = Vector3.zero;
         //rb.velocity = Vector2.zero;
+        guardSFX[2].Play();
         rb.AddForce(new Vector2(-directionToPlayer.x, -directionToPlayer.y) * 2, ForceMode2D.Impulse);
         yield return new WaitForSeconds(.2f);
         state = EnemyState.Attacking;

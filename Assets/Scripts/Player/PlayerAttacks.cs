@@ -139,6 +139,7 @@ public class PlayerAttacks : MonoBehaviour {
         //Debug.Log("Click");
         if (playerMain.playerState != PlayerState.Dodging && canAtk) {
 
+            player.soundFX[0].Play();
             canAtk = false;
             
 
