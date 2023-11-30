@@ -14,7 +14,7 @@ public class EnemyAttack00 : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         
         if (collision.gameObject.CompareTag("Player Hurtbox")) {
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
             collision.gameObject.GetComponent<HeartSystem>().BroadcastMessage("PlayerTakeDamage", enemyDmg);
         }
     }

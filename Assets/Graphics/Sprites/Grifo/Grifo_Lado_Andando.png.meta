@@ -1,0 +1,303 @@
+fileFormatVersion: 2
+guid: 08f7ae0afd67962428a5b57e87ebc8a6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Grifo_Lado_Andando_0
+      rect:
+        serializedVersion: 2
+        x: 15
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.51915836, y: 0.50087655}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 421bb3e01a5743641ba7c206df58fcf4
+      internalID: -618150851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_Andando_1
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.51996964, y: 0.5014511}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab496e108c7bec240811c97108bf03fb
+      internalID: 2117975754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_Andando_2
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5187952, y: 0.5014511}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfa0b5733b1ec1a45af701bad5f3a2fa
+      internalID: -388724296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_Andando_3
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.51879543, y: 0.50290215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad3e9aa7cd60f6499e51b27afbbbd98
+      internalID: 1080806592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_Andando_4
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5199701, y: 0.50290215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a78e0c44cd755a744a7588da4c7927b5
+      internalID: 2080139214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_Andando_5
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.51762074, y: 0.5014511}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7a6d536a961a1048babdaa16942d724
+      internalID: -1143379515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_Andando_6
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.51527137, y: 0.50290215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ac9bcf1281bcd04fb624b4147a87704
+      internalID: 900635373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_Andando_7
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.5187959, y: 0.5014511}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfd8719b9981a3f4b849eb7d6b757c1d
+      internalID: -1967372905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Grifo_Lado_Andando_0: -618150851
+      Grifo_Lado_Andando_1: 2117975754
+      Grifo_Lado_Andando_2: -388724296
+      Grifo_Lado_Andando_3: 1080806592
+      Grifo_Lado_Andando_4: 2080139214
+      Grifo_Lado_Andando_5: -1143379515
+      Grifo_Lado_Andando_6: 900635373
+      Grifo_Lado_Andando_7: -1967372905
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

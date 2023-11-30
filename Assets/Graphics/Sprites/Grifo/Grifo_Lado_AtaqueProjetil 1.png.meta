@@ -1,0 +1,281 @@
+fileFormatVersion: 2
+guid: 1b2a193a24e634a4db83bf2e4ad108e4
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Grifo_Lado_AtaqueProjetil 1_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.47842577, y: 0.49940774}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a835e4b9ab0d146ab0470b6ccb0327
+      internalID: -555362538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_AtaqueProjetil 1_1
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.48065743, y: 0.499115}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cbe1ffad27c23c45a27c2c5a75ffcca
+      internalID: 1471178945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_AtaqueProjetil 1_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.47635904, y: 0.499115}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b410a293edcf044d962a36340746282
+      internalID: -475260395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_AtaqueProjetil 1_3
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.47850835, y: 0.4964601}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 928541713dc944c42bb7549fc120d706
+      internalID: -1063895280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_AtaqueProjetil 1_4
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.48065767, y: 0.4999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7afa8c05a47bb9140a40e4815e2d843e
+      internalID: 1313700956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_AtaqueProjetil 1_5
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.47779194, y: 0.499115}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cdbbd29152cef84e821fe36bb2a47df
+      internalID: 478067403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Grifo_Lado_AtaqueProjetil 1_6
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 10
+        width: 63
+        height: 51
+      alignment: 9
+      pivot: {x: 0.477075, y: 0.499115}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39379ba828b9de64ca10da0787e3234c
+      internalID: 77259713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Grifo_Lado_AtaqueProjetil 1_0: -555362538
+      Grifo_Lado_AtaqueProjetil 1_1: 1471178945
+      Grifo_Lado_AtaqueProjetil 1_2: -475260395
+      Grifo_Lado_AtaqueProjetil 1_3: -1063895280
+      Grifo_Lado_AtaqueProjetil 1_4: 1313700956
+      Grifo_Lado_AtaqueProjetil 1_5: 478067403
+      Grifo_Lado_AtaqueProjetil 1_6: 77259713
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

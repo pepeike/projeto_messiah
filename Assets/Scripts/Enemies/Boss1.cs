@@ -10,7 +10,8 @@ public class Boss1 : MonoBehaviour
         Attacking,
         Damaged,
         Charge,
-        ChargeWindup
+        ChargeWindup,
+        RangeAttack
     }
 
     [SerializeField]
@@ -20,10 +21,13 @@ public class Boss1 : MonoBehaviour
     private float minAtkDist = 2;
 
     private int tickTimer = 0;
-    private int tickTarget = 8;
+    private int tickTarget = 10;
 
     private Animator anim;
     public GameObject chargeBox;
+
+    public GameObject projectile;
+    public Transform projectilePos;
 
     public GameObject Player;
     private Vector3 playerPos;
@@ -110,7 +114,7 @@ public class Boss1 : MonoBehaviour
         }
        
 
-        turret.position = transform.position;
+        turret.gameObject.transform.position = transform.position;
 
         //Debug.Log(directionToTarget);
         //Debug.Log(playerDist);
@@ -129,6 +133,7 @@ public class Boss1 : MonoBehaviour
                 //StartCoroutine(Idle());
                 if (Player != null) {
                     RotateEnemy();
+                    sprite.color = Color.yellow;
                     anim.SetFloat("lookX", directionToPlayer.x);
                     anim.SetFloat("lookY", directionToPlayer.y);
                     anim.SetBool("isMoving", false);
@@ -138,7 +143,7 @@ public class Boss1 : MonoBehaviour
                 break;
             case BossState.Moving:
                 if (Player != null || target != null) {
-
+                    sprite.color = Color.cyan;
                     RotateEnemy();
                     Move();
                     anim.SetFloat("lookX", directionToPlayer.x);
@@ -154,11 +159,14 @@ public class Boss1 : MonoBehaviour
             case BossState.Attacking:
                 if (atkCount == 0) {
                     atkCount++;
+                    anim.SetBool("isAttacking", true);
+                    sprite.color = Color.red;
                     //directionToPlayer = (target.position - transform.position).normalized;
                     StartCoroutine(EnemyAttack());
                 }
                 break;
             case BossState.Damaged:
+                sprite.color = Color.magenta;
                 anim.SetBool("isMoving", false);
 
                 break;
@@ -176,7 +184,11 @@ public class Boss1 : MonoBehaviour
 
     void PassTick() {
 
-        
+        if (tickTimer == 4) {
+            tickTimer++;
+            state = BossState.RangeAttack;
+            anim.SetTrigger("shoot");
+        }
 
         if (tickTimer == tickTarget) {
             tickTimer = 0;
@@ -189,39 +201,41 @@ public class Boss1 : MonoBehaviour
             if (state == BossState.Idle) {
                 if (playerDist <= minAtkDist) {
                     tickTimer++;
-                    sprite.color = Color.red;
+
                     state = BossState.Attacking;
                     //Debug.Log("Attacking");
                 } else {
                     tickTimer++;
-                    sprite.color = Color.cyan;
+
                     state = BossState.Moving;
                     //Debug.Log("Moving");
                 }
             } else if (state == BossState.Moving) {
                 if (playerDist <= minAtkDist) {
                     tickTimer++;
-                    sprite.color = Color.red;
+
                     state = BossState.Attacking;
                     // Debug.Log("Attacking");
                 } else {
                     tickTimer++;
-                    sprite.color = Color.yellow;
+
                     state = BossState.Idle;
                     //Debug.Log("Idle");
                 }
             } else if (state == BossState.Damaged) {
                 if (playerDist < minAtkDist) {
                     tickTimer++;
-                    sprite.color = Color.red;
+
                     state = BossState.Attacking;
                     // Debug.Log("Attacking");
                 } else {
                     tickTimer++;
-                    sprite.color = Color.yellow;
+
                     state = BossState.Idle;
                     //Debug.Log("Idle");
                 }
+            } else if (state == BossState.RangeAttack) {
+                state = BossState.Moving;
             }
 
         }
@@ -263,6 +277,10 @@ public class Boss1 : MonoBehaviour
             StartCoroutine(Knockback());
             hitPoints -= dmg;
         }
+    }
+
+    void Fire() {
+        Instantiate(projectile, projectilePos.transform.position, turret.transform.rotation, projectilePos);
     }
 
     private void RotateEnemy() {
@@ -322,20 +340,21 @@ public class Boss1 : MonoBehaviour
 
     IEnumerator ChargeAttack() {
         rb.velocity = Vector3.zero;
+        rb.AddForce(new Vector2(-directionToPlayer.x, -directionToPlayer.y) * enemySpeed * 2, ForceMode2D.Impulse);
         yield return new WaitForSeconds(.4f);
         sprite.color = Color.yellow;
         yield return new WaitForSeconds(.3f);
         sprite.color = Color.white;
         yield return new WaitForSeconds(.2f);
         Vector2 directionToEnemy = new Vector2(directionToPlayer.x, directionToPlayer.y);
-        Debug.Log(directionToEnemy);
+        //Debug.Log(directionToEnemy);
         sprite.color = Color.yellow;
         yield return new WaitForSeconds(.1f);
         sprite.color = Color.white;
         yield return new WaitForSeconds(.2f);
         chargeBox.SetActive(true);
-        rb.velocity = directionToEnemy * enemySpeed * 10;
-        Debug.Log(directionToEnemy * enemySpeed * 10);
+        rb.velocity = directionToEnemy * enemySpeed * 8;
+        //Debug.Log(directionToEnemy * enemySpeed * 10);
         yield return new WaitForSeconds(1.5f);
         state = BossState.Charge;
         rb.velocity = Vector3.zero;

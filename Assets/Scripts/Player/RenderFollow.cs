@@ -58,7 +58,7 @@ public class RenderFollow : MonoBehaviour {
 
         //playerState = playerMain.playerState;
 
-        Debug.Log(playerState.ToString());
+        //Debug.Log(playerState.ToString());
 
         switch (playerState) {
             case PlayerState.Normal:

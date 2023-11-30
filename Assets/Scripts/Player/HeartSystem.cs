@@ -10,7 +10,7 @@ public class HeartSystem : MonoBehaviour
     public int vida;
 
     [SerializeField]
-    private int vidaMaxima;
+    public int vidaMaxima;
 
     public Image[] coracao;
     public Sprite cheio;
